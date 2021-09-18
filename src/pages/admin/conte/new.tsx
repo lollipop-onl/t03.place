@@ -10,6 +10,8 @@ const AdminConteList: React.VFC = () => {
   const router = useRouter();
 
   const onSubmit = async (values: ConteFormValues): Promise<void> => {
+    console.log(values);
+
     await addDoc<ConteModel>(collections.conte, {
       ...values,
       publishedAt: serverTimestamp(),
