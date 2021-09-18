@@ -1,5 +1,8 @@
+import { noop } from 'lodash-es';
 import Link from 'next/link';
-import React from 'react';
+import { useRouter } from 'next/router';
+import React, { useEffect } from 'react';
+import { useAdminUser } from '~/hooks/useAdminUser';
 
 const SIDEBAR_MENU = [
   { text: 'ダッシュボード', href: '/admin/dashboard' },
@@ -8,6 +11,15 @@ const SIDEBAR_MENU = [
 ];
 
 export const AdminLayout: React.FC = ({ children }) => {
+  const router = useRouter()
+  const { adminUser } = useAdminUser()
+
+  useEffect(() => {
+    if (adminUser == null) {
+      router.push('/admin/sign-in').catch(noop);
+    }
+  }, [adminUser, router])
+
   return (
     <div>
       <aside className="flex justify-between items-center py-2 px-4 border-b">
