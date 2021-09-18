@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import { addDoc, serverTimestamp } from 'firebase/firestore/lite'
+import React from 'react';
+import { collections } from '~/utils'
+import { ConteModel } from '~/types';
 import { AdminConteForm, ConteFormValues } from '@admin/Conte/Form';
 import { AdminLayout } from '@admin/Layout';
-import { collections } from '~/utils'
-import { addDoc } from 'firebase/firestore/lite'
 
 const AdminConteList: React.VFC = () => {
   const onSubmit = async (values: ConteFormValues): Promise<void> => {
-    await addDoc(collections.conte, values);
+    await addDoc<ConteModel>(collections.conte, {
+      ...values,
+      publishedAt: serverTimestamp(),
+      updatedAt: serverTimestamp(),
+    });
   }
 
   return (

@@ -1,11 +1,9 @@
 import { noop } from "lodash-es";
 import React from "react"
 import { useForm } from 'react-hook-form';
+import { ConteModel } from '~/types'
 
-export type ConteFormValues = {
-  permalink: string;
-  title: string;
-}
+export type ConteFormValues = Omit<ConteModel, 'publishedAt' | 'updatedAt'>
 
 export type Props = {
   defaultValues?: ConteFormValues,

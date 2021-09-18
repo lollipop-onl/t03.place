@@ -1,12 +1,11 @@
-import React, { useMemo } from 'react';
-import { useRouter} from 'next/router'
-import { getDocs, query, where, limit, setDoc, doc } from 'firebase/firestore/lite'
-import { AdminLayout } from '@admin/Layout';
+import { getDocs, query, where, limit, updateDoc, doc, serverTimestamp } from 'firebase/firestore/lite'
 import { castArray } from 'lodash-es';
+import { useRouter} from 'next/router'
+import React, { useMemo } from 'react';
 import useSWR from 'swr';
+import { AdminConteForm, ConteFormValues } from '~/components/Admin/Conte/Form';
 import { collections } from '~/utils';
-import { AdminConteForm } from '~/components/Admin/Conte/Form';
-import { ConteModel } from '~/types';
+import { AdminLayout } from '@admin/Layout';
 
 const AdminConteList: React.VFC = () => {
   const router = useRouter()
@@ -21,12 +20,12 @@ const AdminConteList: React.VFC = () => {
     return docs[0];
   });
 
-  const onSubmit = (values: ConteModel) => {
+  const onSubmit = (values: ConteFormValues) => {
     if (!data) {
       return;
     }
 
-    setDoc(doc(collections.conte, data.id), values);
+    updateDoc(doc(collections.conte, data.id), { ...values, updatedAt: serverTimestamp() });
   }
 
   return (
