@@ -1,9 +1,9 @@
-import { initializeApp } from 'firebase/app'
-import { getFirestore } from 'firebase/firestore/lite'
-import { getAuth } from 'firebase/auth'
-import { getStorage } from 'firebase/storage'
-import { getAnalytics } from 'firebase/analytics'
-import { ENV } from '~/const'
+import { getAnalytics } from 'firebase/analytics';
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore/lite';
+import { getStorage } from 'firebase/storage';
+import { ENV } from '~/const';
 
 const app = initializeApp({
   apiKey: ENV.firebase.apiKey,
@@ -20,4 +20,4 @@ export const firebase = {
   db: getFirestore(app),
   auth: getAuth(app),
   storage: getStorage(app),
-}
+};

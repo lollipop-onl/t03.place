@@ -3,6 +3,63 @@ extends:
   - next/core-web-vitals
   - plugin:tailwindcss/recommended
   - prettier
+rules:
+  no-restricted-imports:
+    - error
+    - paths:
+        - name: lodash
+      patterns:
+        - group: [~/const/*]
+        - group: [~/utils/*]
+  import/order:
+    - warn
+    - groups:
+        - [builtin, external]
+        - internal
+        - index
+        - sibling
+        - parent
+        - type
+        - object
+      pathGroups:
+        - pattern: ~/components/**
+          group: internal
+          position: before
+        - pattern: ~/composables/**
+          group: internal
+          position: before
+        - pattern: ~/constants
+          group: internal
+          position: before
+        - pattern: ~/constants/**
+          group: internal
+          position: before
+        - pattern: ~/enum
+          group: internal
+          position: before
+        - pattern: ~/enum/**
+          group: internal
+          position: before
+        - pattern: ~/utils
+          group: internal
+          position: before
+        - pattern: ~/utils/**
+          group: internal
+          position: before
+        - pattern: ~/config/**
+          group: internal
+          position: before
+        - pattern: ~/types
+          group: internal
+          position: before
+        - pattern: ~/types/**
+          group: internal
+          position: before
+        - pattern: ~/**
+          group: internal
+          position: before
+      alphabetize:
+        order: asc
 overrides:
   - files: '**/*'
     excludedFiles: src/pages/**/*.tsx

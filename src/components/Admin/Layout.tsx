@@ -1,5 +1,5 @@
-import React from 'react';
 import Link from 'next/link';
+import React from 'react';
 
 const SIDEBAR_MENU = [
   { text: 'ダッシュボード', href: '/admin/dashboard' },
