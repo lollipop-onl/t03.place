@@ -20,22 +20,28 @@ const AdminConteList: React.VFC = () => {
     return docs[0];
   });
 
-  const onSubmit = (values: ConteFormValues) => {
+  const onSubmit = async (values: ConteFormValues) => {
     if (!data) {
       return;
     }
 
-    updateDoc(doc(collections.conte, data.id), { ...values, updatedAt: serverTimestamp() });
+    await updateDoc(doc(collections.conte, data.id), { ...values, updatedAt: serverTimestamp() });
+
+    if (values.permalink !== permalink) {
+      await router.replace(`/admin/conte/detail/${values.permalink}`);
+    }
   }
 
   return (
     <AdminLayout>
-      <h1>コント詳細</h1>
       {data && (
-        <AdminConteForm
-          defaultValues={data.data()}
-          onSubmit={onSubmit}
-        />
+        <div>
+          <h1>{data.data().title}</h1>
+          <AdminConteForm
+            defaultValues={data.data()}
+            onSubmit={onSubmit}
+          />
+        </div>
       )}
     </AdminLayout>
   );
