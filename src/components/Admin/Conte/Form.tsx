@@ -1,7 +1,6 @@
 import { noop } from "lodash-es";
 import React from "react"
-import { useForm, Controller } from 'react-hook-form';
-import { AdminFormInput } from '@admin/Form/Input'
+import { useForm } from 'react-hook-form';
 
 export type ConteFormValues = {
   permalink: string;
@@ -14,18 +13,20 @@ export type Props = {
 }
 
 export const AdminConteForm: React.VFC<Props> = ({ defaultValues, onSubmit = noop }) => {
-  const { control, handleSubmit } = useForm<ConteFormValues>({ defaultValues });
+  const { register, handleSubmit } = useForm<ConteFormValues>({ defaultValues });
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Controller
-        name="permalink"
-        control={control}
-        rules={{ required: true }}
-        render={({ field, fieldState }) => (
-          <AdminFormInput fieldLabel="パーマリンク" fieldState={fieldState} {...field} />
-        )}
-      />
+      <div className="space-y-2">
+      <div>
+        <label htmlFor="permalink">パーマリンク</label>
+        <input type="text" id="permalink" {...register('permalink')} />
+      </div>
+      <div>
+        <label htmlFor="title">タイトル</label>
+        <input type="text" id="title" {...register('title')} />
+      </div>
+      </div>
       <button type="submit">Submit</button>
     </form>
   )

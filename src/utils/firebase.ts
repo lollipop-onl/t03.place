@@ -16,7 +16,6 @@ const app = initializeApp({
 });
 
 export const firebase = {
-  analytics: getAnalytics(app),
   db: getFirestore(app),
   auth: getAuth(app),
   storage: getStorage(app),

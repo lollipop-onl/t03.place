@@ -19,6 +19,7 @@
     "prettier": "^2.4.1"
   },
   "devDependencies": {
+    "@altostra/type-validations": "^2.4.3",
     "@commitlint/config-conventional": "^13.1.0",
     "@heroicons/react": "^1.0.4",
     "@hookform/devtools": "^4.0.1",

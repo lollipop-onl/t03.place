@@ -11,6 +11,7 @@ rules:
       patterns:
         - group: [~/const/*]
         - group: [~/utils/*]
+        - group: [~/types/*]
   import/order:
     - warn
     - groups:
