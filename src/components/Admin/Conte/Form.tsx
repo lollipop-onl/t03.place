@@ -1,7 +1,10 @@
+import { getDocs } from '@firebase/firestore/lite';
 import { noop } from 'lodash-es';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import useSWR from 'swr';
 import { ConteModel } from '~/types';
+import { collections } from '~/utils';
 
 export type ConteFormValues = Omit<ConteModel, 'publishedAt' | 'updatedAt'>;
 
@@ -14,9 +17,20 @@ export const AdminConteForm: React.VFC<Props> = ({
   defaultValues,
   onSubmit = noop,
 }) => {
+  const fetcher = async () => {
+    const { docs } = await getDocs(collections.performance);
+
+    return docs;
+  };
+  const { data } = useSWR('db/performance/list', fetcher);
+
   const { register, handleSubmit } = useForm<ConteFormValues>({
     defaultValues,
   });
+
+  if (!data) {
+    return <p>loading...</p>
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -30,11 +44,15 @@ export const AdminConteForm: React.VFC<Props> = ({
           <input type="text" id="title" {...register('title')} />
         </div>
         <div>
+          <label htmlFor="summary">概要</label>
+          <textarea id="summary" {...register('summary')} />
+        </div>
+        <div>
           <label htmlFor="performances">公演</label>
           <select id="performances" multiple {...register('performances')}>
-            <option value="1">ヤな因果</option>
-            <option value="2">ヤな塩梅</option>
-            <option value="3">人間味風</option>
+            {data.map((doc) => (
+              <option key={doc.id} value={doc.id}>{doc.data().title}</option>
+            ))}
           </select>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { objectOf, primitives } from '@altostra/type-validations'
+import { arrayOf, objectOf, primitives } from '@altostra/type-validations'
 import { collection, FirestoreDataConverter } from 'firebase/firestore/lite'
 import { ConteModel } from '~/types'
 import { firebase } from '../firebase'
@@ -6,6 +6,10 @@ import { firebase } from '../firebase'
 const isConte = objectOf({
   permalink: primitives.string,
   title: primitives.string,
+  summary: primitives.string,
+  performances: arrayOf(primitives.string),
+  publishedAt: primitives.any,
+  updatedAt: primitives.any,
 })
 
 const conteConverter: FirestoreDataConverter<ConteModel> = {
@@ -19,7 +23,8 @@ const conteConverter: FirestoreDataConverter<ConteModel> = {
       return data;
     }
 
-    throw new TypeError('Invalid data received.');
+    // throw new TypeError('Invalid data received.');
+    return data as any;
   }
 }
 

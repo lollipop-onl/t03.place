@@ -1,10 +1,9 @@
 import { Timestamp } from 'firebase/firestore/lite'
 
-export type ConteModel = {
+export type PerformanceModel = {
   permalink: string;
   title: string;
-  summary: string;
-  performances: string[];
+  number: string;
   publishedAt: Timestamp;
   updatedAt: Timestamp;
 }
