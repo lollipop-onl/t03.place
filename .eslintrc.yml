@@ -3,3 +3,8 @@ extends:
   - next/core-web-vitals
   - plugin:tailwindcss/recommended
   - prettier
+overrides:
+  - files: '**/*'
+    excludedFiles: src/pages/**/*.tsx
+    rules:
+      import/no-default-export: error

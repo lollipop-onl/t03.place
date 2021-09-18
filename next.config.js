@@ -4,6 +4,9 @@ const { merge } = require('webpack-merge');
 /** @type {import('next').NextConfig} */
 module.exports = {
   reactStrictMode: true,
+  images: {
+    domains: ['placehold.jp']
+  },
   webpack: (config) =>
     merge(config, {
       resolve: {
