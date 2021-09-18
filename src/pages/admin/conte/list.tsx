@@ -1,6 +1,7 @@
 import React from "react"
 import Link from "next/link";
 import { AdminLayout } from "~/components/Admin/AdminLayout";
+import { firebase } from '~/utils'
 
 const AdminConteList: React.VFC = () => {
   return (

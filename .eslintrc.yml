@@ -8,3 +8,6 @@ overrides:
     excludedFiles: src/pages/**/*.tsx
     rules:
       import/no-default-export: error
+  - files: src/**/*
+    rules:
+      no-process-env: error
