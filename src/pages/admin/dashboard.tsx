@@ -4,7 +4,7 @@ import { AdminLayout } from '~/components/Admin/AdminLayout';
 const AdminDashboardPage: React.VFC = () => {
   return (
     <AdminLayout>
-      <p>hello world.</p>
+      <h1>ダッシュボード</h1>
     </AdminLayout>
   );
 };
