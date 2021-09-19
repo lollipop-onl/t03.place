@@ -1,4 +1,4 @@
-import { Timestamp } from 'firebase/firestore/lite'
+import { Timestamp } from 'firebase/firestore/lite';
 
 export type ConteModel = {
   /** パーマリンク */
@@ -25,4 +25,4 @@ export type ConteModel = {
   publishedAt: Timestamp;
   /** 更新日時 */
   updatedAt: Timestamp;
-}
+};

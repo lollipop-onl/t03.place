@@ -1,7 +1,7 @@
-import { addDoc, serverTimestamp } from 'firebase/firestore/lite'
+import { addDoc, serverTimestamp } from 'firebase/firestore/lite';
 import { useRouter } from 'next/router';
 import React from 'react';
-import { collections } from '~/utils'
+import { collections } from '~/utils';
 import { ConteModel } from '~/types';
 import { AdminConteForm, ConteFormValues } from '@admin/Conte/Form';
 import { AdminLayout } from '@admin/Layout';
@@ -19,7 +19,7 @@ const AdminConteList: React.VFC = () => {
     });
 
     await router.push(`/admin/conte/detail/${values.permalink}`);
-  }
+  };
 
   return (
     <AdminLayout>

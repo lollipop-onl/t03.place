@@ -1,7 +1,7 @@
-import { objectOf, primitives } from '@altostra/type-validations'
-import { collection, FirestoreDataConverter } from 'firebase/firestore/lite'
-import { PerformanceModel } from '~/types'
-import { firebase } from '../firebase'
+import { objectOf, primitives } from '@altostra/type-validations';
+import { collection, FirestoreDataConverter } from 'firebase/firestore/lite';
+import { PerformanceModel } from '~/types';
+import { firebase } from '../firebase';
 
 const isPerformance = objectOf({
   permalink: primitives.string,
@@ -9,7 +9,7 @@ const isPerformance = objectOf({
   number: primitives.string,
   publishedAt: primitives.any,
   updatedAt: primitives.any,
-})
+});
 
 const performanceConverter: FirestoreDataConverter<PerformanceModel> = {
   toFirestore(performance) {
@@ -26,7 +26,10 @@ const performanceConverter: FirestoreDataConverter<PerformanceModel> = {
     console.log(data);
 
     return data as any;
-  }
-}
+  },
+};
 
-export const performance = collection(firebase.db, 'performances').withConverter(performanceConverter);
+export const performance = collection(
+  firebase.db,
+  'performances'
+).withConverter(performanceConverter);

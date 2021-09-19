@@ -1,4 +1,4 @@
-import { Timestamp } from 'firebase/firestore/lite'
+import { Timestamp } from 'firebase/firestore/lite';
 
 export type PerformanceModel = {
   /** パーマリンク */
@@ -13,4 +13,4 @@ export type PerformanceModel = {
   publishedAt: Timestamp;
   /** 更新日時 */
   updatedAt: Timestamp;
-}
+};

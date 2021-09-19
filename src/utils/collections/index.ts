@@ -5,5 +5,5 @@ import { media } from './media';
 export const collections = {
   conte,
   performance,
-  media
-}
+  media,
+};

@@ -3,8 +3,8 @@ import { noop } from 'lodash-es';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import useSWR from 'swr';
-import { ConteModel } from '~/types';
 import { collections } from '~/utils';
+import { ConteModel } from '~/types';
 
 export type ConteFormValues = Omit<ConteModel, 'publishedAt' | 'updatedAt'>;
 
@@ -29,7 +29,7 @@ export const AdminConteForm: React.VFC<Props> = ({
   });
 
   if (!data) {
-    return <p>loading...</p>
+    return <p>loading...</p>;
   }
 
   return (

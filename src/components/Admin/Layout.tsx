@@ -12,14 +12,14 @@ const SIDEBAR_MENU = [
 ];
 
 export const AdminLayout: React.FC = ({ children }) => {
-  const router = useRouter()
-  const { adminUser } = useAdminUser()
+  const router = useRouter();
+  const { adminUser } = useAdminUser();
 
   useEffect(() => {
     if (adminUser == null) {
       router.push('/admin/sign-in').catch(noop);
     }
-  }, [adminUser, router])
+  }, [adminUser, router]);
 
   return (
     <div>

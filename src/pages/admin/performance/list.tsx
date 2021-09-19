@@ -1,7 +1,7 @@
-import { getDocs } from 'firebase/firestore/lite'
+import { getDocs } from 'firebase/firestore/lite';
 import Link from 'next/link';
 import React from 'react';
-import useSWR from 'swr'
+import useSWR from 'swr';
 import { collections } from '~/utils';
 import { AdminLayout } from '@admin/Layout';
 
@@ -10,7 +10,7 @@ const AdminPerformanceList: React.VFC = () => {
     const { docs } = await getDocs(collections.performance);
 
     return docs;
-  }
+  };
   const { data, error } = useSWR('db/performance/list', fetcher);
 
   return (
@@ -30,7 +30,7 @@ const AdminPerformanceList: React.VFC = () => {
                   <a>{title}</a>
                 </Link>
               </li>
-            )
+            );
           })}
         </ul>
       ) : (

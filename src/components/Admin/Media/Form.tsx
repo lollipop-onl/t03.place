@@ -24,7 +24,9 @@ export const AdminMediaForm: React.VFC<Props> = ({
         <div>
           <label htmlFor="permalink">パーマリンク</label>
           <input type="text" id="permalink" {...register('permalink')} />
-          <p className="text-xs text-gray-600">半角英数字とハイフン・アンダーバーのみ使用可</p>
+          <p className="text-xs text-gray-600">
+            半角英数字とハイフン・アンダーバーのみ使用可
+          </p>
         </div>
         <div>
           <label htmlFor="title">タイトル</label>
@@ -32,7 +34,11 @@ export const AdminMediaForm: React.VFC<Props> = ({
         </div>
         <div>
           <label htmlFor="performancePermalink">公演（パーマリンク）</label>
-          <input type="text" id="performancePermalink" {...register('performancePermalink')} />
+          <input
+            type="text"
+            id="performancePermalink"
+            {...register('performancePermalink')}
+          />
         </div>
         <div>
           <label htmlFor="chapters">チャプター</label>
@@ -55,11 +61,19 @@ export const AdminMediaForm: React.VFC<Props> = ({
         </div>
         <div>
           <label htmlFor="teaserVideoId">ティザー映像のビデオID</label>
-          <input type="text" id="teaserVideoId" {...register('teaserVideoId')} />
+          <input
+            type="text"
+            id="teaserVideoId"
+            {...register('teaserVideoId')}
+          />
         </div>
         <div>
           <label htmlFor="sonyMusicShopUrl">SonyMusicShopの商品URL</label>
-          <input type="text" id="sonyMusicShopUrl" {...register('sonyMusicShopUrl')} />
+          <input
+            type="text"
+            id="sonyMusicShopUrl"
+            {...register('sonyMusicShopUrl')}
+          />
         </div>
         <div>
           <label htmlFor="amazonUrl">Amazonの商品URL</label>
@@ -71,11 +85,19 @@ export const AdminMediaForm: React.VFC<Props> = ({
         </div>
         <div>
           <label htmlFor="towerRecordsUrl">TowerRecordsの商品URL</label>
-          <input type="text" id="towerRecordsUrl" {...register('towerRecordsUrl')} />
+          <input
+            type="text"
+            id="towerRecordsUrl"
+            {...register('towerRecordsUrl')}
+          />
         </div>
         <div>
           <label htmlFor="tsutayaOnlineUrl">TSUTAYA ONLINEの商品URL</label>
-          <input type="text" id="tsutayaOnlineUrl" {...register('tsutayaOnlineUrl')} />
+          <input
+            type="text"
+            id="tsutayaOnlineUrl"
+            {...register('tsutayaOnlineUrl')}
+          />
         </div>
         <div>
           <label htmlFor="rakutenUrl">楽天の商品URL</label>
@@ -83,11 +105,19 @@ export const AdminMediaForm: React.VFC<Props> = ({
         </div>
         <div>
           <label htmlFor="primeVideoUrl">AmazonPrimeVideoの商品URL</label>
-          <input type="text" id="primeVideoUrl" {...register('primeVideoUrl')} />
+          <input
+            type="text"
+            id="primeVideoUrl"
+            {...register('primeVideoUrl')}
+          />
         </div>
         <div>
           <label htmlFor="videoMarketUrl">VideoMarketの商品URL</label>
-          <input type="text" id="videoMarketUrl" {...register('videoMarketUrl')} />
+          <input
+            type="text"
+            id="videoMarketUrl"
+            {...register('videoMarketUrl')}
+          />
         </div>
       </div>
       <button type="submit">Submit</button>

@@ -3,7 +3,10 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { PerformanceModel } from '~/types';
 
-export type PerformanceFormValues = Omit<PerformanceModel, 'publishedAt' | 'updatedAt'>;
+export type PerformanceFormValues = Omit<
+  PerformanceModel,
+  'publishedAt' | 'updatedAt'
+>;
 
 export type Props = {
   defaultValues?: PerformanceFormValues;
@@ -24,7 +27,9 @@ export const AdminPerformanceForm: React.VFC<Props> = ({
         <div>
           <label htmlFor="permalink">パーマリンク</label>
           <input type="text" id="permalink" {...register('permalink')} />
-          <p className="text-xs text-gray-600">半角英数字とハイフン・アンダーバーのみ使用可</p>
+          <p className="text-xs text-gray-600">
+            半角英数字とハイフン・アンダーバーのみ使用可
+          </p>
         </div>
         <div>
           <label htmlFor="title">タイトル</label>

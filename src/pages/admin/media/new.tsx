@@ -1,10 +1,10 @@
-import { addDoc, serverTimestamp } from 'firebase/firestore/lite'
+import { addDoc, serverTimestamp } from 'firebase/firestore/lite';
 import { useRouter } from 'next/router';
 import React from 'react';
-import { collections } from '~/utils'
+import { collections } from '~/utils';
 import { MediaModel } from '~/types';
-import { AdminMediaForm, MediaFormValues } from '@admin/Media/Form';
 import { AdminLayout } from '@admin/Layout';
+import { AdminMediaForm, MediaFormValues } from '@admin/Media/Form';
 
 const AdminMediaList: React.VFC = () => {
   const router = useRouter();
@@ -19,7 +19,7 @@ const AdminMediaList: React.VFC = () => {
     });
 
     await router.push(`/admin/media/detail/${values.permalink}`);
-  }
+  };
 
   return (
     <AdminLayout>

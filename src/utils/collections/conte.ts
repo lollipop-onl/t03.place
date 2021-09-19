@@ -1,7 +1,7 @@
-import { arrayOf, objectOf, primitives } from '@altostra/type-validations'
-import { collection, FirestoreDataConverter } from 'firebase/firestore/lite'
-import { ConteModel } from '~/types'
-import { firebase } from '../firebase'
+import { arrayOf, objectOf, primitives } from '@altostra/type-validations';
+import { collection, FirestoreDataConverter } from 'firebase/firestore/lite';
+import { ConteModel } from '~/types';
+import { firebase } from '../firebase';
 
 const isConte = objectOf({
   permalink: primitives.string,
@@ -10,7 +10,7 @@ const isConte = objectOf({
   performances: arrayOf(primitives.string),
   publishedAt: primitives.any,
   updatedAt: primitives.any,
-})
+});
 
 const conteConverter: FirestoreDataConverter<ConteModel> = {
   toFirestore(conte) {
@@ -27,7 +27,9 @@ const conteConverter: FirestoreDataConverter<ConteModel> = {
     console.log(data);
 
     return data as any;
-  }
-}
+  },
+};
 
-export const conte = collection(firebase.db, 'contes').withConverter(conteConverter);
+export const conte = collection(firebase.db, 'contes').withConverter(
+  conteConverter
+);
