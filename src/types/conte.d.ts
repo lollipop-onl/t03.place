@@ -10,17 +10,17 @@ export type ConteModel = {
   /** コントの長さ */
   conteLength: number;
   /** YouTubeの動画ID */
-  youtubeVideoIds: string[];
+  youtubeVideoIds: string;
   /** タグ */
-  tags: string[];
+  tags: string;
   /** ネタバレタグ */
-  sensitiveTags: string[];
+  sensitiveTags: string;
   /** 飯塚のキャラ設定 */
-  iizuka: string[];
+  iizuka: string;
   /** 角田のキャラ設定 */
-  kakuta: string[];
+  kakuta: string;
   /** 豊本のキャラ設定 */
-  toyomoto: string[];
+  toyomoto: string;
   /** 作成日時 */
   publishedAt: Timestamp;
   /** 更新日時 */

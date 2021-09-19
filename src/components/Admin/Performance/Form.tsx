@@ -24,6 +24,7 @@ export const AdminPerformanceForm: React.VFC<Props> = ({
         <div>
           <label htmlFor="permalink">パーマリンク</label>
           <input type="text" id="permalink" {...register('permalink')} />
+          <p className="text-xs text-gray-600">半角英数字とハイフン・アンダーバーのみ使用可</p>
         </div>
         <div>
           <label htmlFor="title">タイトル</label>
@@ -32,6 +33,19 @@ export const AdminPerformanceForm: React.VFC<Props> = ({
         <div>
           <label htmlFor="number">番号</label>
           <input type="string" id="number" {...register('number')} />
+        </div>
+        <div>
+          <label htmlFor="programs">演目</label>
+          <textarea id="programs" {...register('programs')} />
+          <p className="text-xs text-gray-600">
+            music: [タイトル] ...楽曲
+            <br />
+            movie: [タイトル] ...幕間映像
+            <br />
+            conte: [パーマリンク / タイトル] ...コント
+            <br />
+            special: [パーマリンク / タイトル] ...特別講演・特典映像
+          </p>
         </div>
       </div>
       <button type="submit">Submit</button>

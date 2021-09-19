@@ -23,7 +23,9 @@ const conteConverter: FirestoreDataConverter<ConteModel> = {
       return data;
     }
 
-    // throw new TypeError('Invalid data received.');
+    console.warn('[conte] Invalid data received.');
+    console.log(data);
+
     return data as any;
   }
 }

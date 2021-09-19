@@ -8,6 +8,7 @@ const SIDEBAR_MENU = [
   { text: 'ダッシュボード', href: '/admin/dashboard' },
   { text: 'コント', href: '/admin/conte/list' },
   { text: '公演', href: '/admin/performance/list' },
+  { text: 'メディア', href: '/admin/media/list' },
 ];
 
 export const AdminLayout: React.FC = ({ children }) => {

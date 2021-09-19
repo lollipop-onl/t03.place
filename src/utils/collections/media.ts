@@ -1,32 +1,31 @@
 import { objectOf, primitives } from '@altostra/type-validations'
 import { collection, FirestoreDataConverter } from 'firebase/firestore/lite'
-import { PerformanceModel } from '~/types'
+import { MediaModel } from '~/types'
 import { firebase } from '../firebase'
 
-const isPerformance = objectOf({
+const isMedia = objectOf({
   permalink: primitives.string,
   title: primitives.string,
-  number: primitives.string,
   publishedAt: primitives.any,
   updatedAt: primitives.any,
 })
 
-const performanceConverter: FirestoreDataConverter<PerformanceModel> = {
-  toFirestore(performance) {
-    return performance;
+const mediaConverter: FirestoreDataConverter<MediaModel> = {
+  toFirestore(media) {
+    return media;
   },
   fromFirestore(snapshot) {
     const data = snapshot.data();
 
-    if (isPerformance(data)) {
+    if (isMedia(data)) {
       return data;
     }
 
-    console.warn('[performance] Invalid data received.');
+    console.warn('[media] Invalid data received.');
     console.log(data);
 
     return data as any;
   }
 }
 
-export const performance = collection(firebase.db, 'performances').withConverter(performanceConverter);
+export const media = collection(firebase.db, 'medias').withConverter(mediaConverter);

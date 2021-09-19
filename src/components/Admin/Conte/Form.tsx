@@ -48,12 +48,38 @@ export const AdminConteForm: React.VFC<Props> = ({
           <textarea id="summary" {...register('summary')} />
         </div>
         <div>
-          <label htmlFor="performances">公演</label>
-          <select id="performances" multiple {...register('performances')}>
-            {data.map((doc) => (
-              <option key={doc.id} value={doc.id}>{doc.data().title}</option>
-            ))}
-          </select>
+          <label htmlFor="conteLength">時間(秒)</label>
+          <input type="string" id="conteLength" {...register('conteLength')} />
+        </div>
+        <div>
+          <label htmlFor="youtubeVideoIds">YouTubeビデオID</label>
+          <textarea id="youtubeVideoIds" {...register('youtubeVideoIds')} />
+          <p className="text-xs text-gray-600">カンマ区切りで入力</p>
+        </div>
+        <div>
+          <label htmlFor="tags">タグ</label>
+          <textarea id="tags" {...register('tags')} />
+          <p className="text-xs text-gray-600">カンマ区切りで入力</p>
+        </div>
+        <div>
+          <label htmlFor="sensitiveTags">ネタバレタグ</label>
+          <textarea id="sensitiveTags" {...register('sensitiveTags')} />
+          <p className="text-xs text-gray-600">カンマ区切りで入力</p>
+        </div>
+        <div>
+          <label htmlFor="iizuka">キャラ設定：飯塚</label>
+          <input type="string" id="iizuka" {...register('iizuka')} />
+          <p className="text-xs text-gray-600">カンマ区切りで入力</p>
+        </div>
+        <div>
+          <label htmlFor="kakuta">キャラ設定：角田</label>
+          <input type="string" id="kakuta" {...register('kakuta')} />
+          <p className="text-xs text-gray-600">カンマ区切りで入力</p>
+        </div>
+        <div>
+          <label htmlFor="toyomoto">キャラ設定：豊本</label>
+          <input type="string" id="toyomoto" {...register('toyomoto')} />
+          <p className="text-xs text-gray-600">カンマ区切りで入力</p>
         </div>
       </div>
       <button type="submit">Submit</button>

@@ -3,7 +3,7 @@ import { castArray } from 'lodash-es';
 import { useRouter} from 'next/router'
 import React, { useMemo } from 'react';
 import useSWR from 'swr';
-import { AdminConteForm, ConteFormValues } from '~/components/Admin/Conte/Form';
+import { AdminConteForm, ConteFormValues } from '@admin/Conte/Form';
 import { collections } from '~/utils';
 import { AdminLayout } from '@admin/Layout';
 
