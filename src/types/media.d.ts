@@ -6,7 +6,7 @@ export type MediaModel = {
   /** 公演ID */
   performancePermalink?: string;
   /** チャプター */
-  chapeters?: string[];
+  chapters?: string[];
   /** 発売日 */
   releaseDate: string;
   /** Blu-rayの金額 */
@@ -14,7 +14,7 @@ export type MediaModel = {
   /** DVDの金額 */
   dvdPrice: number;
   /** ティザームービーのビデオID */
-  teaserVodeoId?: string;
+  teaserVideoId?: string;
   /** SonyMusicShopの商品URL */
   sonyMusicShopUrl?: string;
   /** Amazonの商品URL */
