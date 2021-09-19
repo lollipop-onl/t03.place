@@ -32,7 +32,7 @@ export const AdminPerformanceForm: React.VFC<Props> = ({
         </div>
         <div>
           <label htmlFor="number">番号</label>
-          <input type="string" id="number" {...register('number')} />
+          <input type="text" id="number" {...register('number')} />
         </div>
         <div>
           <label htmlFor="programs">演目</label>

@@ -49,7 +49,7 @@ export const AdminConteForm: React.VFC<Props> = ({
         </div>
         <div>
           <label htmlFor="conteLength">時間(秒)</label>
-          <input type="string" id="conteLength" {...register('conteLength')} />
+          <input type="text" id="conteLength" {...register('conteLength')} />
         </div>
         <div>
           <label htmlFor="youtubeVideoIds">YouTubeビデオID</label>
@@ -68,17 +68,17 @@ export const AdminConteForm: React.VFC<Props> = ({
         </div>
         <div>
           <label htmlFor="iizuka">キャラ設定：飯塚</label>
-          <input type="string" id="iizuka" {...register('iizuka')} />
+          <input type="text" id="iizuka" {...register('iizuka')} />
           <p className="text-xs text-gray-600">カンマ区切りで入力</p>
         </div>
         <div>
           <label htmlFor="kakuta">キャラ設定：角田</label>
-          <input type="string" id="kakuta" {...register('kakuta')} />
+          <input type="text" id="kakuta" {...register('kakuta')} />
           <p className="text-xs text-gray-600">カンマ区切りで入力</p>
         </div>
         <div>
           <label htmlFor="toyomoto">キャラ設定：豊本</label>
-          <input type="string" id="toyomoto" {...register('toyomoto')} />
+          <input type="text" id="toyomoto" {...register('toyomoto')} />
           <p className="text-xs text-gray-600">カンマ区切りで入力</p>
         </div>
       </div>
