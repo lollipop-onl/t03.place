@@ -4,5 +4,5 @@ import { ENV } from '~/const';
 import {firebase} from '../firebase';
 
 export const getCollection = <T>(path: string, converter: FirestoreDataConverter<T>) => {
-  return collection(firebase.db, join(ENV.ENVIRONMENT, path)).withConverter(converter);
+  return collection(firebase.db, join('environments', ENV.ENVIRONMENT, path)).withConverter(converter);
 };
