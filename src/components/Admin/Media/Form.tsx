@@ -42,11 +42,29 @@ export const AdminMediaForm: React.VFC<Props> = ({
         </div>
         <div>
           <label htmlFor="chapters">チャプター</label>
-          <input type="text" id="chapters" {...register('chapters')} />
+          <textarea id="chapters" {...register('chapters')} />
+          <p className="text-xs text-gray-600">
+            music: [タイトル] ...楽曲
+            <br />
+            movie: [タイトル] ...幕間映像
+            <br />
+            conte: [パーマリンク / タイトル] ...コント
+          </p>
         </div>
         <div>
-          <label htmlFor="chapters">発売日</label>
-          <input type="text" id="chapters" {...register('chapters')} />
+          <label htmlFor="specialChapters">特典チャプター</label>
+          <textarea id="specialChapters" {...register('specialChapters')} />
+          <p className="text-xs text-gray-600">
+            music: [タイトル] ...楽曲
+            <br />
+            movie: [タイトル] ...幕間映像
+            <br />
+            conte: [パーマリンク / タイトル] ...コント
+          </p>
+        </div>
+        <div>
+          <label htmlFor="releaseDate">発売日</label>
+          <input type="text" id="releaseDate" {...register('releaseDate')} />
           <p className="text-xs text-gray-600">YYYY-MM-DD</p>
         </div>
         <div>
@@ -60,11 +78,11 @@ export const AdminMediaForm: React.VFC<Props> = ({
           <p className="text-xs text-gray-600">税抜価格</p>
         </div>
         <div>
-          <label htmlFor="teaserVideoId">ティザー映像のビデオID</label>
+          <label htmlFor="trailerVideoId">トレーラー映像のビデオID</label>
           <input
             type="text"
-            id="teaserVideoId"
-            {...register('teaserVideoId')}
+            id="trailerVideoId"
+            {...register('trailerVideoId')}
           />
         </div>
         <div>

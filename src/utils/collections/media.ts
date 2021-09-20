@@ -1,7 +1,6 @@
 import { objectOf, primitives } from '@altostra/type-validations';
-import { collection, FirestoreDataConverter } from 'firebase/firestore/lite';
 import { MediaModel } from '~/types';
-import { firebase } from '../firebase';
+import { getCollection } from './utils';
 
 const isMedia = objectOf({
   permalink: primitives.string,
@@ -10,7 +9,7 @@ const isMedia = objectOf({
   updatedAt: primitives.any,
 });
 
-const mediaConverter: FirestoreDataConverter<MediaModel> = {
+export const media = getCollection<MediaModel>('medias', {
   toFirestore(media) {
     return media;
   },
@@ -26,8 +25,4 @@ const mediaConverter: FirestoreDataConverter<MediaModel> = {
 
     return data as any;
   },
-};
-
-export const media = collection(firebase.db, 'medias').withConverter(
-  mediaConverter
-);
+})
