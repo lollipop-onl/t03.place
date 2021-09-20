@@ -27,7 +27,7 @@
 ブランチは上から下への流れでマージされていきます。
 
 |Branch Name|Overview|Base URL|Environment|
-|:--:|:--|
+|:--:|:--|:--:|:--:|
 |`feature/**`|機能追加のブランチ|N/A|DevT03|
 |`develop`|開発環境のメインブランチ|dev.t03.place|DevT03|
 |`preview`|プレビュー版ブランチ|preview.t03.place|LiveT03|
