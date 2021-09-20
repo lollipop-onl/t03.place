@@ -21,10 +21,10 @@
 |`test`|テスト関連の変更|
 |`chore`|上記以外の雑多な変更|
 
-## Branch Operations
+## Branches and Environments
 
-以下のルールでGitブランチを運用します。  
-ブランチは上から下への流れでマージされていきます。
+ブランチと環境は次のような関係を持ちます。  
+開発にあたってブランチはテーブルの上の列から下の列に向かってマージされていくようなフローになります。
 
 |Branch Name|Overview|Base URL|Environment|
 |:--:|:--|:--:|:--:|
