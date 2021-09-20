@@ -20,3 +20,15 @@
 |`style`|コードスタイル・Lint関連の変更|
 |`test`|テスト関連の変更|
 |`chore`|上記以外の雑多な変更|
+
+## Branch Operations
+
+以下のルールでGitブランチを運用します。  
+ブランチは上から下への流れでマージされていきます。
+
+|Branch Name|Overview|Base URL|Environment|
+|:--:|:--|
+|`feature/**`|機能追加のブランチ|N/A|DevT03|
+|`develop`|開発環境のメインブランチ|dev.t03.place|DevT03|
+|`preview`|プレビュー版ブランチ|preview.t03.place|LiveT03|
+|`main`|本番ブランチ|www.t03.place|LiveT03|
