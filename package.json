@@ -43,7 +43,7 @@
     "dev": "cross-env NEXT_PUBLIC_FIREBASE_EMULATORS=on next dev",
     "dev:DevT03": "cross-env next dev",
     "dev:LiveT03": "cross-env NEXT_PUBLIC_ENVIRONMENT=LiveT03 next dev",
-    "emulators": "firebase emulators:start --only auth,firestore,storage",
+    "emulators": "firebase emulators:start --import=./emulator --only auth,firestore,storage",
     "lint": "run-s lint:next lint:prettier",
     "lint:next": "next lint --fix",
     "lint:prettier": "prettier --write --loglevel warn \"src/**/*.{ts,tsx}\"",

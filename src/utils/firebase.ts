@@ -3,7 +3,6 @@ import { getAuth, connectAuthEmulator } from 'firebase/auth';
 import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore/lite';
 import { getStorage, connectStorageEmulator } from 'firebase/storage';
 import { ENV } from '~/const';
-import { emulators } from '../../firebase.json';
 
 const app = initializeApp({
   apiKey: ENV.firebase.apiKey,
@@ -22,6 +21,8 @@ export const firebase = {
 };
 
 if (ENV.firebase.EMULATORS) {
+  const { emulators } = require('../../firebase.json');
+
   connectAuthEmulator(firebase.auth, `http://localhost:${emulators.auth.port}`);
   connectFirestoreEmulator(firebase.db, 'localhost', emulators.firestore.port);
   connectStorageEmulator(firebase.storage, 'localhost', emulators.storage.port);
