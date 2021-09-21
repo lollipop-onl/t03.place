@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { ENV, LOCAL_ADMIN_EMAIL, LOCAL_ADMIN_PASSWORD } from '~/const';
 import { useAdminUser } from '~/hooks/useAdminUser';
 
 type FormValues = {
@@ -10,8 +11,10 @@ type FormValues = {
 
 const AdminSignIn: React.VFC = () => {
   const router = useRouter();
-  const { register, handleSubmit } = useForm<FormValues>({
-    defaultValues: { email: '', password: '' },
+  const { register,　control, handleSubmit } = useForm<FormValues>({
+    defaultValues: ENV.firebase.EMULATORS
+      ? { email: LOCAL_ADMIN_EMAIL, password: LOCAL_ADMIN_PASSWORD }
+      : { email: '', password: '' },
   });
   const { signIn } = useAdminUser();
 
@@ -20,7 +23,7 @@ const AdminSignIn: React.VFC = () => {
 
     await router.replace('/admin/dashboard');
   };
-
+  
   return (
     <div>
       <h1>Sign-in</h1>
