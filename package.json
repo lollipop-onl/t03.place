@@ -39,7 +39,7 @@
   },
   "private": true,
   "scripts": {
-    "build": "next build",
+    "build": "next build && next export",
     "dev": "cross-env NEXT_PUBLIC_FIREBASE_EMULATORS=on next dev",
     "dev:DevT03": "cross-env next dev",
     "dev:LiveT03": "cross-env NEXT_PUBLIC_ENVIRONMENT=LiveT03 next dev",
