@@ -1,18 +1,9 @@
 {
   "name": "@lollipop-onl/t03.place",
   "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "prepare": "husky install",
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint:next": "next lint --fix",
-    "lint:prettier": "prettier --write --loglevel warn \"src/**/*.{ts,tsx}\"",
-    "lint": "run-s lint:next lint:prettier"
-  },
   "dependencies": {
     "@commitlint/cli": "^13.1.0",
+    "cross-env": "^7.0.3",
     "eslint": "7.32.0",
     "husky": "^7.0.2",
     "next": "11.1.2",
@@ -45,5 +36,18 @@
     "tsconfig-paths-webpack-plugin": "^3.5.1",
     "typescript": "4.4.3",
     "webpack-merge": "^5.8.0"
+  },
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "cross-env NEXT_PUBLIC_FIREBASE_EMULATORS=on next dev",
+    "dev:DevT03": "cross-env next dev",
+    "dev:LiveT03": "cross-env NEXT_PUBLIC_ENVIRONMENT=LiveT03 next dev",
+    "emulators": "firebase emulators:start --only auth,firestore,storage",
+    "lint": "run-s lint:next lint:prettier",
+    "lint:next": "next lint --fix",
+    "lint:prettier": "prettier --write --loglevel warn \"src/**/*.{ts,tsx}\"",
+    "prepare": "husky install",
+    "start": "next start"
   }
 }

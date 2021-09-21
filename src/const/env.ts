@@ -3,8 +3,9 @@
 /** 環境変数 */
 export const ENV = {
   // DevT03 or LiveT03
-  ENVIRONMENT: process.env.ENVIRONMENT || 'DevT03',
+  ENVIRONMENT: process.env.NEXT_PUBLIC_ENVIRONMENT || 'DevT03',
   firebase: {
+    EMULATORS: process.env.NEXT_PUBLIC_FIREBASE_EMULATORS === 'on',
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_apiKey,
     authDomain: process.env.NEXT_PUBLIC_FIREBASE_authDomain,
     projectId: process.env.NEXT_PUBLIC_FIREBASE_projectId,
