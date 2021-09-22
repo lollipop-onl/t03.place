@@ -14,6 +14,7 @@ import useSWR from 'swr';
 import { collections } from '~/utils';
 import { AdminConteForm, ConteFormValues } from '@admin/Conte/Form';
 import { AdminLayout } from '@admin/Layout';
+import { AdminContentHeading } from '~/components/Admin/Content/Heading';
 
 const AdminConteList: React.VFC = () => {
   const router = useRouter();
@@ -49,7 +50,11 @@ const AdminConteList: React.VFC = () => {
     <AdminLayout>
       {data && (
         <div>
-          <h1>{data.data().title}</h1>
+          <AdminContentHeading
+            title={data.data().title}
+            description="コントの情報を確認・変更します"
+            breadcrumbs={[{ title: 'ダッシュボード', href: '/admin/dashboard' }, { title: 'コント一覧', href: '/admin/conte/list' }]}
+          />
           <AdminConteForm defaultValues={data.data()} onSubmit={onSubmit} />
         </div>
       )}

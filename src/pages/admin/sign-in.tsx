@@ -14,7 +14,7 @@ type FormValues = {
 
 const AdminSignIn: React.VFC = () => {
   const router = useRouter();
-  const { handleSubmit, register, formState, watch } = useForm<FormValues>({
+  const { handleSubmit, control, watch } = useForm<FormValues>({
     defaultValues: ENV.firebase.EMULATORS
       ? { email: LOCAL_ADMIN_EMAIL, secure: { password: LOCAL_ADMIN_PASSWORD } }
       : { email: '', secure: { password: '' } },
@@ -22,8 +22,6 @@ const AdminSignIn: React.VFC = () => {
   const { signIn } = useAdminUser();
 
   const onSubmit = async ({ email, secure: { password } }: FormValues) => {
-    console.log(email, password);
-
     await signIn(email, password);
 
     await router.replace('/admin/dashboard');
@@ -37,16 +35,14 @@ const AdminSignIn: React.VFC = () => {
           <AdminFormInput
             label="メールアドレス"
             name="email"
-            register={register}
-            formState={formState}
+            control={control}
             rules={{ required: true }}
-          />
+            />
           <AdminFormInput
             label="パスワード"
             name="secure.password"
             type="password"
-            register={register}
-            formState={formState}
+            control={control}
             rules={{ required: true }}
           />
           <button type="submit">サインイン</button>

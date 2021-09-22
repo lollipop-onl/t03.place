@@ -5,6 +5,7 @@ import { collections } from '~/utils';
 import { ConteModel } from '~/types';
 import { AdminConteForm, ConteFormValues } from '@admin/Conte/Form';
 import { AdminLayout } from '@admin/Layout';
+import { AdminContentHeading } from '~/components/Admin/Content/Heading';
 
 const AdminConteList: React.VFC = () => {
   const router = useRouter();
@@ -23,7 +24,11 @@ const AdminConteList: React.VFC = () => {
 
   return (
     <AdminLayout>
-      <h1>コント追加</h1>
+      <AdminContentHeading
+        title="コント登録"
+        description="新しいコントを登録します"
+        breadcrumbs={[{ title: 'ダッシュボード', href: '/admin/dashboard' }, { title: 'コント一覧', href: '/admin/conte/list' }]}
+      />
       <AdminConteForm onSubmit={onSubmit} />
     </AdminLayout>
   );

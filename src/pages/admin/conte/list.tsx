@@ -4,6 +4,7 @@ import React from 'react';
 import useSWR from 'swr';
 import { collections } from '~/utils';
 import { AdminLayout } from '@admin/Layout';
+import { AdminContentHeading } from '~/components/Admin/Content/Heading';
 
 const AdminConteList: React.VFC = () => {
   const fetcher = async () => {
@@ -15,7 +16,11 @@ const AdminConteList: React.VFC = () => {
 
   return (
     <AdminLayout>
-      <h1>コント一覧</h1>
+      <AdminContentHeading
+        title="コント一覧"
+        description="T03 PLACE に登録されているコントの一覧です"
+        breadcrumbs={[{ title: 'ダッシュボード', href: '/admin/dashboard' }]}
+      />
       <Link href="/admin/conte/new">
         <a>コントを登録</a>
       </Link>

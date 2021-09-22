@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
+import logo from '~/assets/admin/images/logo.svg';
 import { useAdminUser } from '~/hooks/useAdminUser';
 
 const SIDEBAR_MENU = [
@@ -44,9 +45,9 @@ export const AdminLayout: React.FC = ({ children }) => {
     <div className="flex flex-col min-h-screen bg-gray-100">
       <header className="flex flex-shrink-0 justify-between items-center px-4 h-16 bg-gray-700">
         <Image
-          src="https://placehold.jp/120x48.png"
-          width={120}
-          height={48}
+          src={logo}
+          width={85.89473684}
+          height={24}
           alt="LOLLIPOP LAUNCHER"
         />
         <button className="flex justify-center items-center w-16 h-16 bg-black bg-opacity-0 hover:bg-opacity-10 transition">
@@ -59,9 +60,9 @@ export const AdminLayout: React.FC = ({ children }) => {
           />
         </button>
       </header>
-      <div className="md:flex flex-grow">
+      <div className="flex flex-col md:flex-row flex-grow">
         <aside className="flex-shrink-0 md:w-60 min-h-full bg-white">
-          <ul className="px-2 pt-10 space-y-2">
+          <ul className="py-2 md:py-8 px-2 space-y-1 md:space-y-2">
             {SIDEBAR_MENU.map(({ text, href, Icon }, index) => (
               <li key={index}>
                 <Link href={href}>
@@ -82,7 +83,7 @@ export const AdminLayout: React.FC = ({ children }) => {
             ))}
           </ul>
         </aside>
-        <main className="flex flex-col flex-grow pt-4 mx-auto max-w-screen-lg">
+        <main className="flex flex-col flex-grow pt-4 mx-auto w-full max-w-screen-lg">
           <div className="flex-grow px-4">
             {children}
           </div>
