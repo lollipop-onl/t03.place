@@ -15,6 +15,7 @@ import { AdminUiHeading } from '~/components/Admin/Ui/Heading';
 import { collections } from '~/utils';
 import { AdminConteForm, ConteFormValues } from '@admin/Conte/Form';
 import { AdminLayout } from '@admin/Layout';
+import { useAsyncFn } from 'react-use'
 
 const AdminConteList: React.VFC = () => {
   const router = useRouter();
@@ -31,7 +32,7 @@ const AdminConteList: React.VFC = () => {
     return docs[0];
   });
 
-  const onSubmit = async (values: ConteFormValues) => {
+  const [submitState, onSubmit] = useAsyncFn(async (values: ConteFormValues) => {
     if (!data) {
       return;
     }
@@ -44,7 +45,7 @@ const AdminConteList: React.VFC = () => {
     if (values.permalink !== permalink) {
       await router.replace(`/admin/conte/detail/${values.permalink}`);
     }
-  };
+  }, [router]);
 
   return (
     <AdminLayout>
@@ -58,7 +59,7 @@ const AdminConteList: React.VFC = () => {
               { title: 'コント一覧', href: '/admin/conte/list' },
             ]}
           />
-          <AdminConteForm defaultValues={data.data()} onSubmit={onSubmit} />
+          <AdminConteForm defaultValues={data.data()} onSubmit={onSubmit} loading={submitState.loading} />
         </div>
       )}
     </AdminLayout>

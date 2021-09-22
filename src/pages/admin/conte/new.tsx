@@ -1,6 +1,7 @@
 import { addDoc, serverTimestamp } from 'firebase/firestore/lite';
 import { useRouter } from 'next/router';
 import React from 'react';
+import { useAsyncFn } from 'react-use'
 import { AdminUiHeading } from '~/components/Admin/Ui/Heading';
 import { collections } from '~/utils';
 import { ConteModel } from '~/types';
@@ -10,7 +11,7 @@ import { AdminLayout } from '@admin/Layout';
 const AdminConteList: React.VFC = () => {
   const router = useRouter();
 
-  const onSubmit = async (values: ConteFormValues): Promise<void> => {
+  const [submitState, onSubmit] = useAsyncFn(async (values: ConteFormValues): Promise<void> => {
     console.log(values);
 
     await addDoc<ConteModel>(collections.conte, {
@@ -20,7 +21,7 @@ const AdminConteList: React.VFC = () => {
     });
 
     await router.push(`/admin/conte/detail/${values.permalink}`);
-  };
+  }, [router]);
 
   return (
     <AdminLayout>
@@ -32,7 +33,7 @@ const AdminConteList: React.VFC = () => {
           { title: 'コント一覧', href: '/admin/conte/list' },
         ]}
       />
-      <AdminConteForm onSubmit={onSubmit} />
+      <AdminConteForm loading={submitState.loading} onSubmit={onSubmit} />
     </AdminLayout>
   );
 };

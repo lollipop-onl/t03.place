@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import Link, { LinkProps } from 'next/link';
-import React from 'react';
+import React, { useMemo } from 'react';
+import Loader from 'react-loader-spinner';
 
 export type ExtendedProps =
   | Omit<
@@ -20,7 +21,7 @@ export type ExtendedProps =
       LinkProps);
 
 export type Props = ExtendedProps & {
-  style: 'primary' | 'secondary' | 'outlined';
+  style: 'primary' | 'warning' | 'failure' | 'cancel';
   fluid?: boolean;
   loading?: boolean;
 };
@@ -32,19 +33,36 @@ export const AdminUiButton: React.FC<Props> = ({
   loading,
   ...props
 }) => {
+  const theme = useMemo(() => {
+    switch (style) {
+      case 'primary':
+        return {
+          'bg-gray-700 text-white': true,
+          'hover:bg-gray-500 disabled:bg-gray-300': !loading,
+        };
+      case 'warning':
+        return {
+          'bg-yellow-500 text-white': true,
+          'hover:bg-yellow-600 disabled:bg-gray-300': !loading,
+        };
+      case 'failure':
+        return {
+          'bg-red-500 text-white': true,
+          'hover:bg-red-600 disabled:bg-gray-300': !loading,
+        };
+      case 'cancel':
+        return {
+          'bg-white border-2 border-gray-200 text-gray-900': true,
+          'hover:bg-opacity-40 disabled:border-gray-300 disabled:text-gray-300 disabled:bg-opacity-0':
+            !loading,
+        };
+    }
+  }, [style, loading]);
   const classNames = clsx(
-    'block relative py-2 px-6 text-center rounded transition',
+    'block relative py-2 px-4 min-w-[120px] text-sm text-center rounded transition',
+    theme,
     {
       'text-opacity-0': loading,
-      'bg-blue-500 text-white': style === 'primary',
-      'hover:bg-blue-700 disabled:bg-gray-300': style === 'primary' && !loading,
-      'bg-black text-white': style === 'secondary',
-      'hover:bg-opacity-60 disabled:bg-gray-300':
-        style === 'secondary' && !loading,
-      'bg-black bg-opacity-0 border border-gray-400 text-gray-900':
-        style === 'outlined',
-      'hover:bg-opacity-5 disabled:border-gray-300 disabled:text-gray-300 disabled:bg-opacity-0':
-        style === 'outlined' && !loading,
       'w-full': fluid,
     }
   );
@@ -93,13 +111,19 @@ export const AdminUiButton: React.FC<Props> = ({
       {children}
       <span
         className={clsx(
-          'block absolute top-1/2 left-1/2 w-4 h-4 bg-white rounded-full transition-opacity transform -translate-x-1/2 -translate-y-1/2',
+          'block absolute top-1/2 left-1/2 transition-opacity transform -translate-x-1/2 -translate-y-1/2',
           {
             'opacity-0': !loading,
             'opacity-100': loading,
           }
         )}
-      />
+      >
+        <Loader
+          type="Oval"
+          color={style === 'cancel' ? '#aaa' : '#fff'}
+          height={24}
+        />
+      </span>
     </button>
   );
 };

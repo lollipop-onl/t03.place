@@ -13,11 +13,13 @@ export type ConteFormValues = Omit<ConteModel, 'publishedAt' | 'updatedAt'>;
 
 export type Props = {
   defaultValues?: ConteFormValues;
+  loading?: boolean;
   onSubmit?(values: ConteFormValues): void;
 };
 
 export const AdminConteForm: React.VFC<Props> = ({
   defaultValues,
+  loading = false,
   onSubmit = noop,
 }) => {
   const { control, handleSubmit } =
@@ -119,9 +121,8 @@ export const AdminConteForm: React.VFC<Props> = ({
         />
       </div>
       <div className="flex mt-4 space-x-4">
-        <AdminUiButton type="submit" style="primary">保存する</AdminUiButton>
-        <AdminUiButton type="submit" style="secondary">保存する</AdminUiButton>
-        <AdminUiButton type="submit" style="outlined">保存する</AdminUiButton>
+        <AdminUiButton type="submit" style="primary" loading={loading}>保存する</AdminUiButton>
+        <AdminUiButton href="/admin/conte/list" style="cancel">一覧に戻る</AdminUiButton>
       </div>
     </form>
   );
