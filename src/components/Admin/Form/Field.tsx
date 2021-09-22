@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
-import { FieldError } from 'react-hook-form';
+import { ControllerFieldState } from 'react-hook-form';
 import { AdminFormErrorMessage } from '@admin/Form/ErrorMessage';
 
 export type Props = {
   label: string;
   id: string;
-  error?: FieldError;
+  fieldState: ControllerFieldState;
   note?: string;
   render(params: {
     id: string;
@@ -17,21 +17,18 @@ export type Props = {
 export const AdminFormField: React.VFC<Props> = ({
   label,
   id,
-  error,
+  fieldState,
   note,
   render,
 }) => {
-  const isInvalid = useMemo(() => !!(error && error.type), [error]);
   const errorMessageId = useMemo(() => `${id}__errorMessage`, [id]);
   const aria = useMemo(
     () => ({
-      'aria-invalid': isInvalid,
-      'aria-describedby': isInvalid ? errorMessageId : undefined,
+      'aria-invalid': fieldState.invalid,
+      'aria-describedby': fieldState.invalid ? errorMessageId : undefined,
     }),
-    [isInvalid, errorMessageId]
+    [fieldState, errorMessageId]
   );
-
-  console.log(error);
 
   return (
     <div>
@@ -39,11 +36,11 @@ export const AdminFormField: React.VFC<Props> = ({
         {label}
       </label>
       <div className="mt-1">
-        {render({ id, aria, invalid: isInvalid })}
+        {render({ id, aria, invalid: fieldState.invalid })}
         {note && <p className="pt-1 text-xs text-gray-400">{note}</p>}
         <div className="py-1 h-5">
-          {isInvalid && (
-            <AdminFormErrorMessage id={errorMessageId} error={error} />
+          {fieldState.invalid && (
+            <AdminFormErrorMessage id={errorMessageId} error={fieldState.error} />
           )}
         </div>
       </div>

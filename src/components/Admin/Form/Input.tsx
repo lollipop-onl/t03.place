@@ -32,7 +32,7 @@ export const AdminFormInput = <T extends Record<string, any>>({
     <AdminFormField
       label={label}
       id={props.id || name}
-      error={fieldState.error}
+      fieldState={fieldState}
       render={({ id, aria, invalid }) => (
         <div
           className={clsx('rounded border-2', {

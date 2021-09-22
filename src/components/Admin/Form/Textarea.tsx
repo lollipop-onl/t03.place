@@ -2,11 +2,9 @@ import clsx from 'clsx';
 import { get } from 'lodash-es';
 import { useMemo } from 'react';
 import {
-  FormState,
   Path,
   Control,
   RegisterOptions,
-  UseFormRegister,
   useController,
 } from 'react-hook-form';
 import { AdminFormField } from '@admin/Form/Field';
@@ -36,7 +34,7 @@ export const AdminFormTextarea = <T extends Record<string, any>>({
     <AdminFormField
       label={label}
       id={props.id || name}
-      error={fieldState.error}
+      fieldState={fieldState}
       note={note}
       render={({ id, aria, invalid }) => (
         <div
