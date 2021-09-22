@@ -70,9 +70,9 @@ export const AdminLayout: React.FC = ({ children }) => {
                     className={clsx(
                       'flex items-center py-3 px-4 space-x-2 text-sm text-gray-700 rounded-md transition-colors',
                       {
-                          'bg-indigo-500 text-white': router.pathname === href,
-                          'hover:bg-gray-200': router.pathname !== href,
-                        }
+                        'bg-indigo-500 text-white': router.pathname === href,
+                        'hover:bg-gray-200': router.pathname !== href,
+                      }
                     )}
                   >
                     <span className="w-9 h-6 text-sm">{Icon}</span>
@@ -84,11 +84,11 @@ export const AdminLayout: React.FC = ({ children }) => {
           </ul>
         </aside>
         <main className="flex flex-col flex-grow pt-4 mx-auto w-full max-w-screen-lg">
-          <div className="flex-grow px-4">
-            {children}
-          </div>
+          <div className="flex-grow px-4">{children}</div>
           <footer className="flex-shrink-0 p-4 mt-4">
-            <p className="text-sm text-center text-black text-opacity-30">&copy; 2021 lollipop.onl All Rights Reserved.</p>
+            <p className="text-sm text-center text-black text-opacity-30">
+              &copy; 2021 lollipop.onl All Rights Reserved.
+            </p>
           </footer>
         </main>
       </div>

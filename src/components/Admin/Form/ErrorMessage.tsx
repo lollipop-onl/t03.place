@@ -13,10 +13,10 @@ export const AdminFormErrorMessage: React.VFC<Props> = ({ id, error }) => {
         return null;
       case 'required':
         return '必須項目が入力されていません';
-        case 'isPermalink':
-          return 'パーマリンクに半角スペースとスラッシュは使用できません';
-        case 'isUniquePermalink':
-          return 'そのパーマリンクはすでに登録されています';
+      case 'isPermalink':
+        return 'パーマリンクに半角スペースとスラッシュは使用できません';
+      case 'isUniquePermalink':
+        return 'そのパーマリンクはすでに登録されています';
       default:
         return 'バリデーションエラーです';
     }

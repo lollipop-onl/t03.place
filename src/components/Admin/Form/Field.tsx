@@ -40,7 +40,10 @@ export const AdminFormField: React.VFC<Props> = ({
         {note && <p className="pt-1 text-xs text-gray-400">{note}</p>}
         <div className="py-1 h-5">
           {fieldState.invalid && (
-            <AdminFormErrorMessage id={errorMessageId} error={fieldState.error} />
+            <AdminFormErrorMessage
+              id={errorMessageId}
+              error={fieldState.error}
+            />
           )}
         </div>
       </div>

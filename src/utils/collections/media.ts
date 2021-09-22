@@ -25,4 +25,4 @@ export const media = getCollection<MediaModel>('medias', {
 
     return data as any;
   },
-})
+});

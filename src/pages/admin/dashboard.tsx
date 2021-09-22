@@ -1,8 +1,8 @@
 import { uploadString, ref } from 'firebase/storage';
 import React from 'react';
+import { AdminUiHeading } from '~/components/Admin/Ui/Heading';
 import { firebase } from '~/utils';
 import { AdminLayout } from '@admin/Layout';
-import { AdminContentHeading } from '~/components/Admin/Content/Heading';
 
 const AdminDashboardPage: React.VFC = () => {
   const uploadDataFile = async () => {
@@ -16,7 +16,7 @@ const AdminDashboardPage: React.VFC = () => {
 
   return (
     <AdminLayout>
-      <AdminContentHeading
+      <AdminUiHeading
         title="ダッシュボード"
         description="サービス全体の統計情報やトピックを確認します"
       />

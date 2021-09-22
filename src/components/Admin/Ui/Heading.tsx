@@ -1,6 +1,6 @@
+import { ChevronRightIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
 import React from 'react';
-import { ChevronRightIcon } from '@heroicons/react/solid'
 
 export type Props = {
   title: string;
@@ -8,7 +8,7 @@ export type Props = {
   breadcrumbs?: Array<{ href: string; title: string }>;
 };
 
-export const AdminContentHeading: React.VFC<Props> = ({
+export const AdminUiHeading: React.VFC<Props> = ({
   title,
   description,
   breadcrumbs = [],
@@ -27,8 +27,10 @@ export const AdminContentHeading: React.VFC<Props> = ({
           ))}
         </ol>
       )}
-      <h2 className="text-xl text-gray-700 mt-1">{title}</h2>
-      {description && <p className="mt-2 text-sm text-gray-500">{description}</p>}
+      <h2 className="mt-1 text-xl text-gray-700">{title}</h2>
+      {description && (
+        <p className="mt-2 text-sm text-gray-500">{description}</p>
+      )}
     </div>
   );
 };

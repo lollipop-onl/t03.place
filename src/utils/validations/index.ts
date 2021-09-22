@@ -6,4 +6,4 @@ export const isPermalink: Validate<unknown> = (value) => {
   }
 
   return /^[^ /]+$/.test(value);
-}
+};

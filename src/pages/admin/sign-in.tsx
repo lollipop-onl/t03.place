@@ -37,7 +37,7 @@ const AdminSignIn: React.VFC = () => {
             name="email"
             control={control}
             rules={{ required: true }}
-            />
+          />
           <AdminFormInput
             label="パスワード"
             name="secure.password"

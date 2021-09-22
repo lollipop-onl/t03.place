@@ -1,12 +1,7 @@
 import clsx from 'clsx';
 import { get } from 'lodash-es';
 import { useMemo } from 'react';
-import {
-  Path,
-  Control,
-  RegisterOptions,
-  useController,
-} from 'react-hook-form';
+import { Path, Control, RegisterOptions, useController } from 'react-hook-form';
 import { AdminFormField } from '@admin/Form/Field';
 
 export type Props<T> = React.DetailedHTMLProps<
@@ -39,7 +34,7 @@ export const AdminFormTextarea = <T extends Record<string, any>>({
       render={({ id, aria, invalid }) => (
         <div
           className={clsx('rounded border-2', {
-            'border': !invalid,
+            border: !invalid,
             'border-red-700': invalid,
           })}
         >

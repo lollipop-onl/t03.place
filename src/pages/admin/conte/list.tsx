@@ -2,9 +2,9 @@ import { getDocs } from 'firebase/firestore/lite';
 import Link from 'next/link';
 import React from 'react';
 import useSWR from 'swr';
+import { AdminUiHeading } from '~/components/Admin/Ui/Heading';
 import { collections } from '~/utils';
 import { AdminLayout } from '@admin/Layout';
-import { AdminContentHeading } from '~/components/Admin/Content/Heading';
 
 const AdminConteList: React.VFC = () => {
   const fetcher = async () => {
@@ -16,7 +16,7 @@ const AdminConteList: React.VFC = () => {
 
   return (
     <AdminLayout>
-      <AdminContentHeading
+      <AdminUiHeading
         title="コント一覧"
         description="T03 PLACE に登録されているコントの一覧です"
         breadcrumbs={[{ title: 'ダッシュボード', href: '/admin/dashboard' }]}

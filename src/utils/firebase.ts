@@ -1,6 +1,9 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, connectAuthEmulator } from 'firebase/auth';
-import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore/lite';
+import {
+  getFirestore,
+  connectFirestoreEmulator,
+} from 'firebase/firestore/lite';
 import { getStorage, connectStorageEmulator } from 'firebase/storage';
 import { ENV } from '~/const';
 

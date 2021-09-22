@@ -7,6 +7,7 @@ import { collections, isPermalink } from '~/utils';
 import { ConteModel } from '~/types';
 import { AdminFormInput } from '@admin/Form/Input';
 import { AdminFormTextarea } from '@admin/Form/Textarea';
+import { AdminUiButton } from '@admin/Ui/Button';
 
 export type ConteFormValues = Omit<ConteModel, 'publishedAt' | 'updatedAt'>;
 
@@ -19,9 +20,10 @@ export const AdminConteForm: React.VFC<Props> = ({
   defaultValues,
   onSubmit = noop,
 }) => {
-  const { register, control, formState, handleSubmit } = useForm<ConteFormValues>({
-    defaultValues,
-  });
+  const { control, handleSubmit } =
+    useForm<ConteFormValues>({
+      defaultValues,
+    });
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -116,7 +118,11 @@ export const AdminConteForm: React.VFC<Props> = ({
           rules={{ required: true }}
         />
       </div>
-      <button type="submit">Submit</button>
+      <div className="flex mt-4 space-x-4">
+        <AdminUiButton type="submit" style="primary">保存する</AdminUiButton>
+        <AdminUiButton type="submit" style="secondary">保存する</AdminUiButton>
+        <AdminUiButton type="submit" style="outlined">保存する</AdminUiButton>
+      </div>
     </form>
   );
 };
