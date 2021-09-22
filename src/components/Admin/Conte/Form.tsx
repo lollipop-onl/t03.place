@@ -1,10 +1,12 @@
-import { getDocs } from '@firebase/firestore/lite';
+import { getDocs, query, where, limit } from '@firebase/firestore/lite';
 import { noop } from 'lodash-es';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import useSWR from 'swr';
-import { collections } from '~/utils';
+import { collections, isPermalink } from '~/utils';
 import { ConteModel } from '~/types';
+import { AdminFormInput } from '@admin/Form/Input';
+import { AdminFormTextarea } from '@admin/Form/Textarea';
 
 export type ConteFormValues = Omit<ConteModel, 'publishedAt' | 'updatedAt'>;
 
@@ -17,70 +19,102 @@ export const AdminConteForm: React.VFC<Props> = ({
   defaultValues,
   onSubmit = noop,
 }) => {
-  const fetcher = async () => {
-    const { docs } = await getDocs(collections.performance);
-
-    return docs;
-  };
-  const { data } = useSWR('db/performance/list', fetcher);
-
-  const { register, handleSubmit } = useForm<ConteFormValues>({
+  const { register, control, formState, handleSubmit } = useForm<ConteFormValues>({
     defaultValues,
   });
 
-  if (!data) {
-    return <p>loading...</p>;
-  }
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="space-y-2">
-        <div>
-          <label htmlFor="permalink">パーマリンク</label>
-          <input type="text" id="permalink" {...register('permalink')} />
-        </div>
-        <div>
-          <label htmlFor="title">タイトル</label>
-          <input type="text" id="title" {...register('title')} />
-        </div>
-        <div>
-          <label htmlFor="summary">概要</label>
-          <textarea id="summary" {...register('summary')} />
-        </div>
-        <div>
-          <label htmlFor="conteLength">時間(秒)</label>
-          <input type="text" id="conteLength" {...register('conteLength')} />
-        </div>
-        <div>
-          <label htmlFor="youtubeVideoIds">YouTubeビデオID</label>
-          <textarea id="youtubeVideoIds" {...register('youtubeVideoIds')} />
-          <p className="text-xs text-gray-600">カンマ区切りで入力</p>
-        </div>
-        <div>
-          <label htmlFor="tags">タグ</label>
-          <textarea id="tags" {...register('tags')} />
-          <p className="text-xs text-gray-600">カンマ区切りで入力</p>
-        </div>
-        <div>
-          <label htmlFor="sensitiveTags">ネタバレタグ</label>
-          <textarea id="sensitiveTags" {...register('sensitiveTags')} />
-          <p className="text-xs text-gray-600">カンマ区切りで入力</p>
-        </div>
-        <div>
-          <label htmlFor="iizuka">キャラ設定：飯塚</label>
-          <input type="text" id="iizuka" {...register('iizuka')} />
-          <p className="text-xs text-gray-600">カンマ区切りで入力</p>
-        </div>
-        <div>
-          <label htmlFor="kakuta">キャラ設定：角田</label>
-          <input type="text" id="kakuta" {...register('kakuta')} />
-          <p className="text-xs text-gray-600">カンマ区切りで入力</p>
-        </div>
-        <div>
-          <label htmlFor="toyomoto">キャラ設定：豊本</label>
-          <input type="text" id="toyomoto" {...register('toyomoto')} />
-          <p className="text-xs text-gray-600">カンマ区切りで入力</p>
-        </div>
+      <div>
+        <AdminFormInput
+          label="パーマリンク"
+          name="permalink"
+          control={control}
+          rules={{
+            required: true,
+            validate: {
+              isPermalink,
+              isUniquePermalink: async (permalink) => {
+                if (typeof permalink !== 'string') {
+                  return false;
+                }
+
+                if (permalink === defaultValues?.permalink) {
+                  return true;
+                }
+
+                const { docs } = await getDocs(
+                  query(
+                    collections.conte,
+                    where('permalink', '==', permalink),
+                    limit(1)
+                  )
+                );
+
+                console.log(docs);
+
+                return docs.length === 0;
+              },
+            },
+          }}
+        />
+        <AdminFormInput
+          label="タイトル"
+          name="title"
+          control={control}
+          rules={{ required: true }}
+        />
+        <AdminFormTextarea
+          label="概要"
+          name="summary"
+          control={control}
+          rules={{ required: true }}
+        />
+        <AdminFormInput
+          label="時間（秒）"
+          name="conteLength"
+          control={control}
+          rules={{ required: true }}
+        />
+        <AdminFormTextarea
+          label="YouTubeビデオID"
+          name="youtubeVideoIds"
+          control={control}
+          rules={{ required: true }}
+          note="カンマ区切りで入力"
+        />
+        <AdminFormTextarea
+          label="タグ"
+          name="tags"
+          control={control}
+          rules={{ required: true }}
+          note="カンマ区切りで入力"
+        />
+        <AdminFormTextarea
+          label="ネタバレタグ"
+          name="sensitiveTags"
+          control={control}
+          rules={{ required: true }}
+          note="カンマ区切りで入力"
+        />
+        <AdminFormInput
+          label="キャラ設定：飯塚"
+          name="characterTags.iizuka"
+          control={control}
+          rules={{ required: true }}
+        />
+        <AdminFormInput
+          label="キャラ設定：角田"
+          name="characterTags.kakuta"
+          control={control}
+          rules={{ required: true }}
+        />
+        <AdminFormInput
+          label="キャラ設定：豊本"
+          name="characterTags.toyomoto"
+          control={control}
+          rules={{ required: true }}
+        />
       </div>
       <button type="submit">Submit</button>
     </form>

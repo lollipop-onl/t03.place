@@ -2,28 +2,32 @@ import clsx from 'clsx';
 import { get } from 'lodash-es';
 import { useMemo } from 'react';
 import {
+  FormState,
   Path,
-  RegisterOptions,
-  useController,
   Control,
+  RegisterOptions,
+  UseFormRegister,
+  useController,
 } from 'react-hook-form';
 import { AdminFormField } from '@admin/Form/Field';
 
 export type Props<T> = React.DetailedHTMLProps<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
+  React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+  HTMLTextAreaElement
 > & {
   label: string;
   name: Path<T>;
   control: Control<T>;
   rules?: RegisterOptions<T, Path<T>>;
+  note?: string;
 };
 
-export const AdminFormInput = <T extends Record<string, any>>({
+export const AdminFormTextarea = <T extends Record<string, any>>({
   label,
   name,
   control,
   rules,
+  note,
   ...props
 }: Props<T>) => {
   const { fieldState, field } = useController({ name, control, rules });
@@ -33,6 +37,7 @@ export const AdminFormInput = <T extends Record<string, any>>({
       label={label}
       id={props.id || name}
       error={fieldState.error}
+      note={note}
       render={({ id, aria, invalid }) => (
         <div
           className={clsx('rounded border-2', {
@@ -40,9 +45,9 @@ export const AdminFormInput = <T extends Record<string, any>>({
             'border-red-700': invalid,
           })}
         >
-          <input
+          <textarea
             id={id}
-            className="px-2 w-full h-10 border-0"
+            className="px-2 w-full h-32 border-0"
             {...field}
             {...props}
             {...aria}

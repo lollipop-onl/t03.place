@@ -15,12 +15,15 @@ export type ConteModel = {
   tags: string;
   /** ネタバレタグ */
   sensitiveTags: string;
-  /** 飯塚のキャラ設定 */
-  iizuka: string;
-  /** 角田のキャラ設定 */
-  kakuta: string;
-  /** 豊本のキャラ設定 */
-  toyomoto: string;
+  /** キャラクター設定タグ */
+  characterTags: {
+    /** 飯塚 */
+    iizuka: string;
+    /** 角田 */
+    kakuta: string;
+    /** 豊本 */
+    toyomoto: string;
+  };
   /** 作成日時 */
   publishedAt: Timestamp;
   /** 更新日時 */

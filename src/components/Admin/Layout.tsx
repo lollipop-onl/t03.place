@@ -61,7 +61,7 @@ export const AdminLayout: React.FC = ({ children }) => {
       </header>
       <div className="md:flex flex-grow">
         <aside className="flex-shrink-0 md:w-60 min-h-full bg-white">
-          <ul className="px-2 space-y-2 pt-10">
+          <ul className="px-2 pt-10 space-y-2">
             {SIDEBAR_MENU.map(({ text, href, Icon }, index) => (
               <li key={index}>
                 <Link href={href}>
@@ -82,8 +82,13 @@ export const AdminLayout: React.FC = ({ children }) => {
             ))}
           </ul>
         </aside>
-        <main className="flex-grow pt-4 mx-auto max-w-screen-lg">
-          {children}
+        <main className="flex flex-col flex-grow pt-4 mx-auto max-w-screen-lg">
+          <div className="flex-grow px-4">
+            {children}
+          </div>
+          <footer className="flex-shrink-0 p-4 mt-4">
+            <p className="text-sm text-center text-black text-opacity-30">&copy; 2021 lollipop.onl All Rights Reserved.</p>
+          </footer>
         </main>
       </div>
     </div>
