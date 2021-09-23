@@ -1,7 +1,7 @@
 import { addDoc, serverTimestamp } from 'firebase/firestore/lite';
 import { useRouter } from 'next/router';
 import React from 'react';
-import { useAsyncFn } from 'react-use'
+import { useAsyncFn } from 'react-use';
 import { AdminUiHeading } from '~/components/Admin/Ui/Heading';
 import { collections } from '~/utils';
 import { ConteModel } from '~/types';
@@ -11,17 +11,20 @@ import { AdminLayout } from '@admin/Layout';
 const AdminConteList: React.VFC = () => {
   const router = useRouter();
 
-  const [submitState, onSubmit] = useAsyncFn(async (values: ConteFormValues): Promise<void> => {
-    console.log(values);
+  const [submitState, onSubmit] = useAsyncFn(
+    async (values: ConteFormValues): Promise<void> => {
+      console.log(values);
 
-    await addDoc<ConteModel>(collections.conte, {
-      ...values,
-      publishedAt: serverTimestamp(),
-      updatedAt: serverTimestamp(),
-    });
+      await addDoc<ConteModel>(collections.conte, {
+        ...values,
+        publishedAt: serverTimestamp(),
+        updatedAt: serverTimestamp(),
+      });
 
-    await router.push(`/admin/conte/detail/${values.permalink}`);
-  }, [router]);
+      await router.push(`/admin/conte/detail/${values.permalink}`);
+    },
+    [router]
+  );
 
   return (
     <AdminLayout>

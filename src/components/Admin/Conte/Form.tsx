@@ -22,10 +22,9 @@ export const AdminConteForm: React.VFC<Props> = ({
   loading = false,
   onSubmit = noop,
 }) => {
-  const { control, handleSubmit } =
-    useForm<ConteFormValues>({
-      defaultValues,
-    });
+  const { control, handleSubmit } = useForm<ConteFormValues>({
+    defaultValues,
+  });
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -121,8 +120,12 @@ export const AdminConteForm: React.VFC<Props> = ({
         />
       </div>
       <div className="flex mt-4 space-x-4">
-        <AdminUiButton type="submit" style="primary" loading={loading}>保存する</AdminUiButton>
-        <AdminUiButton href="/admin/conte/list" style="cancel">一覧に戻る</AdminUiButton>
+        <AdminUiButton type="submit" style="primary" loading={loading}>
+          保存する
+        </AdminUiButton>
+        <AdminUiButton href="/admin/conte/list" style="cancel">
+          一覧に戻る
+        </AdminUiButton>
       </div>
     </form>
   );

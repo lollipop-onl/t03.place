@@ -8,10 +8,12 @@ rules:
     - error
     - paths:
         - name: lodash
+        - name: next/image
       patterns:
         - group: [~/const/*]
         - group: [~/utils/*]
         - group: [~/types/*]
+  '@next/next/no-img-element': 'off'
   import/order:
     - warn
     - groups:

@@ -7,6 +7,9 @@ module.exports = {
   images: {
     domains: ['placehold.jp']
   },
+  exportPathMap() {
+    return {};
+  },
   webpack: (config) =>
     merge(config, {
       resolve: {

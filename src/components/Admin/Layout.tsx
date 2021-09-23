@@ -1,11 +1,10 @@
 import { ViewGridIcon, ViewListIcon } from '@heroicons/react/outline';
 import clsx from 'clsx';
 import { noop } from 'lodash-es';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
-import logo from '~/assets/admin/images/logo.svg';
+import logoImg from '~/assets/admin/images/logo.svg';
 import { useAdminUser } from '~/hooks/useAdminUser';
 
 const SIDEBAR_MENU = [
@@ -44,14 +43,9 @@ export const AdminLayout: React.FC = ({ children }) => {
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
       <header className="flex flex-shrink-0 justify-between items-center px-4 h-16 bg-gray-700">
-        <Image
-          src={logo}
-          width={85.89473684}
-          height={24}
-          alt="LOLLIPOP LAUNCHER"
-        />
+        <img alt="LOLLIPOP LAUNCHER" {...logoImg} />
         <button className="flex justify-center items-center w-16 h-16 bg-black bg-opacity-0 hover:bg-opacity-10 transition">
-          <Image
+          <img
             src="https://placehold.jp/32x32.png"
             width={32}
             height={32}
