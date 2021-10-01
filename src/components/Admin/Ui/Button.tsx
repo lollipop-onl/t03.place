@@ -59,11 +59,12 @@ export const AdminUiButton: React.FC<Props> = ({
     }
   }, [style, loading]);
   const classNames = clsx(
-    'block relative py-2 px-4 min-w-[120px] text-sm text-center rounded transition',
+    'relative py-2 px-4 min-w-[120px] text-sm text-center rounded transition',
     theme,
     {
       'text-opacity-0': loading,
-      'w-full': fluid,
+      'inline-block': !fluid,
+      'block  w-full': fluid,
     }
   );
 

@@ -14,7 +14,7 @@ export const AdminUiHeading: React.VFC<Props> = ({
   breadcrumbs = [],
 }) => {
   return (
-    <div className="mb-8">
+    <div className="mb-6">
       {breadcrumbs.length > 0 && (
         <ol className="flex flex-wrap">
           {breadcrumbs.map(({ href, title }, index) => (

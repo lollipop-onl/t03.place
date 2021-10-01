@@ -2,6 +2,7 @@ import { addDoc, serverTimestamp } from 'firebase/firestore/lite';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { useAsyncFn } from 'react-use';
+import { AdminUiCard } from '~/components/Admin/Ui/Card';
 import { AdminUiHeading } from '~/components/Admin/Ui/Heading';
 import { collections } from '~/utils';
 import { ConteModel } from '~/types';
@@ -36,7 +37,9 @@ const AdminConteList: React.VFC = () => {
           { title: 'コント一覧', href: '/admin/conte/list' },
         ]}
       />
-      <AdminConteForm loading={submitState.loading} onSubmit={onSubmit} />
+      <AdminUiCard>
+        <AdminConteForm loading={submitState.loading} onSubmit={onSubmit} />
+      </AdminUiCard>
     </AdminLayout>
   );
 };

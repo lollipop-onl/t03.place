@@ -12,6 +12,7 @@ import { useRouter } from 'next/router';
 import React, { useMemo } from 'react';
 import { useAsyncFn } from 'react-use';
 import useSWR from 'swr';
+import { AdminUiCard } from '~/components/Admin/Ui/Card';
 import { AdminUiHeading } from '~/components/Admin/Ui/Heading';
 import { collections } from '~/utils';
 import { AdminConteForm, ConteFormValues } from '@admin/Conte/Form';
@@ -62,11 +63,13 @@ const AdminConteList: React.VFC = () => {
               { title: 'コント一覧', href: '/admin/conte/list' },
             ]}
           />
-          <AdminConteForm
-            defaultValues={data.data()}
-            onSubmit={onSubmit}
-            loading={submitState.loading}
-          />
+          <AdminUiCard>
+            <AdminConteForm
+              defaultValues={data.data()}
+              onSubmit={onSubmit}
+              loading={submitState.loading}
+            />
+          </AdminUiCard>
         </div>
       )}
     </AdminLayout>

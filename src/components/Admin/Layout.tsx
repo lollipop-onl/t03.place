@@ -1,4 +1,4 @@
-import { ViewGridIcon, ViewListIcon } from '@heroicons/react/outline';
+import { ViewGridIcon, ViewListIcon, DesktopComputerIcon, PlayIcon, CollectionIcon, OfficeBuildingIcon } from '@heroicons/react/outline';
 import clsx from 'clsx';
 import { noop } from 'lodash-es';
 import Link from 'next/link';
@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import logoImg from '~/assets/admin/images/logo.svg';
 import { useAdminUser } from '~/hooks/useAdminUser';
+import { AdminUiButton } from '@admin/Ui/Button';
 
 const SIDEBAR_MENU = [
   {
@@ -16,17 +17,22 @@ const SIDEBAR_MENU = [
   {
     text: 'コント',
     href: '/admin/conte/list',
-    Icon: <ViewListIcon className="h-6" />,
+    Icon: <CollectionIcon className="h-6" />,
   },
   {
     text: '公演',
     href: '/admin/performance/list',
-    Icon: <ViewListIcon className="h-6" />,
+    Icon: <OfficeBuildingIcon className="h-6" />,
   },
   {
     text: 'メディア',
     href: '/admin/media/list',
-    Icon: <ViewListIcon className="h-6" />,
+    Icon: <PlayIcon className="h-6" />,
+  },
+  {
+    text: 'サイトを開く',
+    href: '/',
+    Icon: <DesktopComputerIcon className="h-6" />,
   },
 ];
 
@@ -44,7 +50,7 @@ export const AdminLayout: React.FC = ({ children }) => {
     <div className="flex flex-col min-h-screen bg-gray-100">
       <header className="flex flex-shrink-0 justify-between items-center px-4 h-16 bg-gray-700">
         <img alt="LOLLIPOP LAUNCHER" {...logoImg} />
-        <button className="flex justify-center items-center w-16 h-16 bg-black bg-opacity-0 hover:bg-opacity-10 transition">
+        <button className="flex overflow-hidden justify-center items-center w-16 h-16 bg-black bg-opacity-0 hover:bg-opacity-10 transition">
           <img
             src="https://placehold.jp/32x32.png"
             width={32}
@@ -55,8 +61,11 @@ export const AdminLayout: React.FC = ({ children }) => {
         </button>
       </header>
       <div className="flex flex-col md:flex-row flex-grow">
-        <aside className="flex-shrink-0 md:w-60 min-h-full bg-white">
-          <ul className="py-2 md:py-8 px-2 space-y-1 md:space-y-2">
+        <aside className="flex-shrink-0 py-4 md:py-8 md:w-60 min-h-full bg-white">
+          <div className="px-4 mb-4">
+            <AdminUiButton href="/admin/conte/new" style="primary" fluid>コントを登録</AdminUiButton>
+          </div>
+          <ul className="px-2 space-y-1 md:space-y-2">
             {SIDEBAR_MENU.map(({ text, href, Icon }, index) => (
               <li key={index}>
                 <Link href={href}>
@@ -77,7 +86,7 @@ export const AdminLayout: React.FC = ({ children }) => {
             ))}
           </ul>
         </aside>
-        <main className="flex flex-col flex-grow pt-4 mx-auto w-full max-w-screen-lg">
+        <main className="flex flex-col flex-grow pt-4 md:pt-8 mx-auto w-full max-w-screen-lg">
           <div className="flex-grow px-4">{children}</div>
           <footer className="flex-shrink-0 p-4 mt-4">
             <p className="text-sm text-center text-black text-opacity-30">

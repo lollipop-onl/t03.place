@@ -5,6 +5,8 @@ import useSWR from 'swr';
 import { AdminUiHeading } from '~/components/Admin/Ui/Heading';
 import { collections } from '~/utils';
 import { AdminLayout } from '@admin/Layout';
+import { AdminUiCard } from '~/components/Admin/Ui/Card';
+import { AdminUiButton } from '~/components/Admin/Ui/Button';
 
 const AdminConteList: React.VFC = () => {
   const fetcher = async () => {
@@ -21,26 +23,26 @@ const AdminConteList: React.VFC = () => {
         description="T03 PLACE に登録されているコントの一覧です"
         breadcrumbs={[{ title: 'ダッシュボード', href: '/admin/dashboard' }]}
       />
-      <Link href="/admin/conte/new">
-        <a>コントを登録</a>
-      </Link>
-      {data ? (
-        <ul>
-          {data.map((doc) => {
-            const { permalink, title } = doc.data();
+      <AdminUiCard>
+        <AdminUiButton href="/admin/conte/new" style="primary">コントを登録</AdminUiButton>
+        {data ? (
+          <ul>
+            {data.map((doc) => {
+              const { permalink, title } = doc.data();
 
-            return (
-              <li key={doc.id}>
-                <Link href={`/admin/conte/detail/${permalink}`}>
-                  <a>{title}</a>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      ) : (
-        <p>loading...</p>
-      )}
+              return (
+                <li key={doc.id}>
+                  <Link href={`/admin/conte/detail/${permalink}`}>
+                    <a>{title}</a>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          <p>loading...</p>
+        )}
+      </AdminUiCard>
     </AdminLayout>
   );
 };

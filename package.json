@@ -14,6 +14,7 @@
     "@commitlint/config-conventional": "^13.1.0",
     "@heroicons/react": "^1.0.4",
     "@hookform/devtools": "^4.0.1",
+    "@hookform/resolvers": "^2.8.1",
     "@tailwindcss/forms": "^0.3.3",
     "@types/lodash-es": "^4.17.5",
     "@types/react": "17.0.21",
@@ -36,7 +37,8 @@
     "tailwindcss": "^2.2.15",
     "tsconfig-paths-webpack-plugin": "^3.5.1",
     "typescript": "4.4.3",
-    "webpack-merge": "^5.8.0"
+    "webpack-merge": "^5.8.0",
+    "yup": "^0.32.9"
   },
   "private": true,
   "scripts": {
