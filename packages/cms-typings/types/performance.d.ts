@@ -1,18 +1,26 @@
-import { MicroCMSApiBaseSchema, MicroCMSCustomFieldBaseSchema } from './common'
+import { MicroCMSApiBaseSchema, MicroCMSCustomFieldBaseSchema } from './common';
 import { MicroCMSApiMusicSchema } from './music';
 import { MicroCMSApiWorksSchema } from './works';
 
-export type MicroCMSCustomFieldWorkSchema = MicroCMSCustomFieldBaseSchema<'work', {
-  work: MicroCMSApiWorksSchema;
-}>;
+export type MicroCMSCustomFieldWorkSchema = MicroCMSCustomFieldBaseSchema<
+  'work',
+  {
+    work: MicroCMSApiWorksSchema;
+  }
+>;
 
-export type MicroCMSCustomFieldMusicSchema = MicroCMSCustomFieldBaseSchema<'music', {
-  music: MicroCMSApiMusicSchema;
-}>;
+export type MicroCMSCustomFieldMusicSchema = MicroCMSCustomFieldBaseSchema<
+  'music',
+  {
+    music: MicroCMSApiMusicSchema;
+  }
+>;
 
 export type MicroCMSApiPerformanceSchema = MicroCMSApiBaseSchema<{
-  type: '単独公演' |'ユニットライブ' |'特別公演' |'その他';
+  type: '単独公演' | 'ユニットライブ' | '特別公演' | 'その他';
   permalink: string;
   title: string;
-  programs: Array<MicroCMSCustomFieldWorkSchema | MicroCMSCustomFieldMusicSchema>;
+  programs: Array<
+    MicroCMSCustomFieldWorkSchema | MicroCMSCustomFieldMusicSchema
+  >;
 }>;

@@ -1,4 +1,4 @@
-import { MicroCMSApiBaseSchema } from './common'
+import { MicroCMSApiBaseSchema } from './common';
 
 export type MicroCMSApiMusicSchema = MicroCMSApiBaseSchema<{
   type: '挿入歌' | 'オープニング' | 'エンディング';

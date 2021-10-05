@@ -16,4 +16,4 @@ export type MicroCMSImageSchema = {
   url: string;
   width: number;
   height: number;
-}
+};

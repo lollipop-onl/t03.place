@@ -1,4 +1,4 @@
-import { MicroCMSApiBaseSchema, MicroCMSCustomFieldBaseSchema } from './common'
+import { MicroCMSApiBaseSchema, MicroCMSCustomFieldBaseSchema } from './common';
 import { MicroCMSApiMusicSchema } from './music';
 
 export type MicroCMSCustomFieldTagSchema = MicroCMSCustomFieldBaseSchema<{
@@ -6,10 +6,10 @@ export type MicroCMSCustomFieldTagSchema = MicroCMSCustomFieldBaseSchema<{
   sensitive: boolean;
 }>;
 
-
-export type MicroCMSCustomFieldYouTubeVideoSchema = MicroCMSCustomFieldBaseSchema<{
-  videoId: string;
-}>;
+export type MicroCMSCustomFieldYouTubeVideoSchema =
+  MicroCMSCustomFieldBaseSchema<{
+    videoId: string;
+  }>;
 
 export type MicroCMSApiWorksSchema = MicroCMSApiBaseSchema<{
   type: 'ネタ' | '映像';
