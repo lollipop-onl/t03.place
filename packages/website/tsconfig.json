@@ -15,7 +15,8 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./*"]
+      "~/*": ["./*"],
+      "@cms-typings": ["../cms-typings/types"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
