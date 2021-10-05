@@ -1,56 +1,29 @@
 {
-  "name": "@lollipop-onl/t03.place",
+  "name": "t03.place",
   "version": "0.1.0",
+  "author": "lollipop-onl <lollipop@simochee.net>",
   "dependencies": {
-    "@commitlint/cli": "^13.1.0",
-    "cross-env": "^7.0.3",
-    "eslint": "7.32.0",
-    "husky": "^7.0.2",
-    "next": "11.1.2",
+    "eslint": "^7.32.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.4.1"
   },
   "devDependencies": {
-    "@altostra/type-validations": "^2.4.3",
-    "@commitlint/config-conventional": "^13.1.0",
-    "@heroicons/react": "^1.0.4",
-    "@hookform/devtools": "^4.0.1",
-    "@hookform/resolvers": "^2.8.1",
-    "@tailwindcss/forms": "^0.3.3",
-    "@types/lodash-es": "^4.17.5",
-    "@types/react": "17.0.21",
-    "autoprefixer": "^10.3.4",
-    "clsx": "^1.1.1",
-    "eslint-config-next": "11.1.2",
+    "eslint-config-next": "^11.1.2",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-tailwindcss": "^1.14.3",
-    "firebase": "^9.0.2",
-    "framer-motion": "^4.1.17",
-    "lodash-es": "^4.17.21",
-    "npm-run-all": "^4.1.5",
-    "postcss": "^8.3.6",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-hook-form": "^7.15.3",
-    "react-loader-spinner": "^4.0.0",
-    "react-use": "^17.3.1",
-    "swr": "^1.0.1",
-    "tailwindcss": "^2.2.15",
-    "tsconfig-paths-webpack-plugin": "^3.5.1",
-    "typescript": "4.4.3",
-    "webpack-merge": "^5.8.0",
-    "yup": "^0.32.9"
+    "eslint-plugin-tailwindcss": "^1.16.1"
   },
+  "license": "MIT",
+  "main": "index.js",
   "private": true,
+  "repository": "git@github.com:lollipop-onl/t03.place.git",
   "scripts": {
-    "build": "next build && next export",
-    "dev": "cross-env NEXT_PUBLIC_FIREBASE_EMULATORS=on next dev",
-    "dev:DevT03": "cross-env next dev",
-    "dev:LiveT03": "cross-env NEXT_PUBLIC_ENVIRONMENT=LiveT03 next dev",
-    "emulators": "firebase emulators:start --import=./emulator --only auth,firestore,storage",
-    "lint": "run-s lint:next lint:prettier",
-    "lint:next": "next lint --fix",
-    "lint:prettier": "prettier --write --loglevel warn \"src/**/*.{ts,tsx}\"",
-    "prepare": "husky install",
-    "start": "next start"
-  }
+    "dev": "yarn workspace website dev",
+    "lint": "run-s \"lint:next --fix\" \"lint:prettier --write\"",
+    "lint:check": "run-s lint:next \"lint:prettier --check\"",
+    "lint:next": "eslint --ext js,ts,tsx .",
+    "lint:prettier": "prettier --loglevel warn \"**/*.{js,ts,tsx}\""
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }

@@ -3,6 +3,11 @@ extends:
   - next/core-web-vitals
   - plugin:tailwindcss/recommended
   - prettier
+settings:
+  tailwindcss:
+    config: ./packages/website/tailwind.config.js
+  next:
+    rootDir: ./packages/website/
 rules:
   no-restricted-imports:
     - error
@@ -63,11 +68,3 @@ rules:
           position: before
       alphabetize:
         order: asc
-overrides:
-  - files: '**/*'
-    excludedFiles: src/pages/**/*.tsx
-    rules:
-      import/no-default-export: error
-  - files: src/**/*
-    rules:
-      no-process-env: error
