@@ -23,13 +23,12 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
   const work = works.find(({ slug }) => slug === params?.slug);
 
   if (!work) {
-    return { notFound: true};
+    return { notFound: true };
   }
 
   const referencedPerformances = performances.filter(({ programs }) =>
     programs.some(
-      (program) =>
-        program.fieldId === 'work' && program.work.slug === work.slug
+      (program) => program.fieldId === 'work' && program.work.slug === work.slug
     )
   );
 
