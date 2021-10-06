@@ -45,7 +45,7 @@ const fetchList = async <T>(endpoint: string): Promise<T[]> => {
 };
 
 (async function main() {
-  console.log('\n🚛 Downloading ...\n')
+  console.log('\n🚛 Downloading ...\n');
 
   const [settings, works, music, performances] = await Promise.all([
     client.get<MicroCMSApiSettingsSchema>({ endpoint: 'settings' }),
