@@ -1,0 +1,11 @@
+{
+  "name": "cms-contents",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@tsconfig/node16": "^1.0.2",
+    "microcms-js-sdk": "^1.2.0"
+  }
+}

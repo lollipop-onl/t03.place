@@ -1,18 +1,18 @@
 import { MicroCMSApiBaseSchema, MicroCMSCustomFieldBaseSchema } from './common';
 import { MicroCMSApiMusicSchema } from './music';
 
-export type MicroCMSCustomFieldTagSchema = MicroCMSCustomFieldBaseSchema<{
+export type MicroCMSCustomFieldTagSchema = MicroCMSCustomFieldBaseSchema<'tag', {
   name: string;
   sensitive: boolean;
 }>;
 
 export type MicroCMSCustomFieldYouTubeVideoSchema =
-  MicroCMSCustomFieldBaseSchema<{
+  MicroCMSCustomFieldBaseSchema<'youtubeVideo', {
     videoId: string;
   }>;
 
 export type MicroCMSApiWorksSchema = MicroCMSApiBaseSchema<{
-  type: 'ネタ' | '映像';
+  type: Array<'ネタ' | '映像'>;
   permalink: string;
   title: string;
   summary?: string;

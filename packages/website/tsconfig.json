@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["./*"],
-      "@cms-typings": ["../cms-typings/types"]
+      "@cms-typings": ["../cms-typings/types"],
+      "@cms-contents": ["../cms-contents/contents.json"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
