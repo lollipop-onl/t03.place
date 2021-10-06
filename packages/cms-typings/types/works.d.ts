@@ -19,7 +19,7 @@ export type MicroCMSCustomFieldYouTubeVideoSchema =
 
 export type MicroCMSApiWorksSchema = MicroCMSApiBaseSchema<{
   type: Array<'ネタ' | '映像'>;
-  permalink: string;
+  slug: string;
   title: string;
   summary?: string;
   length?: number;

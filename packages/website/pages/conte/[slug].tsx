@@ -12,7 +12,7 @@ type Props = {
 };
 
 type Params = {
-  permalink: string;
+  slug: string;
 };
 
 export const getStaticProps: GetStaticProps<Props, Params> = async ({
@@ -20,7 +20,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
 }) => {
   const { works, performances } = await import('@cms-contents');
 
-  const work = works.find(({ permalink }) => permalink === params?.permalink);
+  const work = works.find(({ slug }) => slug === params?.slug);
 
   if (!work) {
     return { notFound: true};
@@ -29,7 +29,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
   const referencedPerformances = performances.filter(({ programs }) =>
     programs.some(
       (program) =>
-        program.fieldId === 'work' && program.work.permalink === work.permalink
+        program.fieldId === 'work' && program.work.slug === work.slug
     )
   );
 
@@ -47,7 +47,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   return {
     paths: works
       .filter(({ type }) => type.includes('ネタ'))
-      .map(({ permalink }) => ({ params: { permalink } })),
+      .map(({ slug }) => ({ params: { slug } })),
     fallback: false,
   };
 };
