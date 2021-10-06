@@ -9,6 +9,7 @@ import {
   MicroCMSApiWorksSchema,
 } from '../../cms-typings/types';
 
+const rootDir = path.join(__dirname, '../../..');
 const exportFilePath = path.join(__dirname, '..', 'contents.json');
 
 const fetchList = async <T>(endpoint: string): Promise<T[]> => {
@@ -44,11 +45,13 @@ const fetchList = async <T>(endpoint: string): Promise<T[]> => {
 };
 
 (async function main() {
+  console.log('\n🚛 Downloading ...\n')
+
   const [settings, works, music, performances] = await Promise.all([
-    client.get<MicroCMSApiSettingsSchema>({ endpoint: '/settings' }),
-    fetchList<MicroCMSApiWorksSchema>('/works'),
-    fetchList<MicroCMSApiMusicSchema>('/music'),
-    fetchList<MicroCMSApiPerformanceSchema>('/performances'),
+    client.get<MicroCMSApiSettingsSchema>({ endpoint: 'settings' }),
+    fetchList<MicroCMSApiWorksSchema>('works'),
+    fetchList<MicroCMSApiMusicSchema>('music'),
+    fetchList<MicroCMSApiPerformanceSchema>('performances'),
   ]);
 
   console.log('🎉 All MicroCMS contents are downloaded');
@@ -59,5 +62,5 @@ const fetchList = async <T>(endpoint: string): Promise<T[]> => {
     'utf-8'
   );
 
-  console.log(`📦 Export succeed to ${exportFilePath}`);
+  console.log(`📦 Export succeed to ${path.relative(rootDir, exportFilePath)}`);
 })();

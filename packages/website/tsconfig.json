@@ -17,7 +17,7 @@
     "paths": {
       "~/*": ["./*"],
       "@cms-typings": ["../cms-typings/types"],
-      "@cms-contents": ["../cms-contents/contents.json"],
+      "@cms-contents": ["../cms-contents"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

@@ -30,7 +30,7 @@ export type MicroCMSCustomFieldNotificationSchema =
   >;
 
 export type MicroCMSApiSettingsSchema = MicroCMSApiBaseSchema<{
-  pickup: MicroCMSCustomFieldPickupSchema;
-  maintenance: MicroCMSCustomFieldMaintenanceSchema;
-  notificationBar: MicroCMSCustomFieldNotificationSchema;
+  pickup: MicroCMSCustomFieldPickupSchema | null;
+  maintenance: MicroCMSCustomFieldMaintenanceSchema | null;
+  notificationBar: MicroCMSCustomFieldNotificationSchema | null;
 }>;

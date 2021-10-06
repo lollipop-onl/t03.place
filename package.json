@@ -21,7 +21,8 @@
     "lint": "run-s \"lint:next --fix\" \"lint:prettier --write\"",
     "lint:check": "run-s lint:next \"lint:prettier --check\"",
     "lint:next": "eslint --ext js,ts,tsx .",
-    "lint:prettier": "prettier --loglevel warn \"**/*.{js,ts,tsx}\""
+    "lint:prettier": "prettier --loglevel warn \"**/*.{js,ts,tsx}\"",
+    "download:contents": "yarn workspace cms-contents start -r dotenv/config"
   },
   "workspaces": [
     "packages/*"
