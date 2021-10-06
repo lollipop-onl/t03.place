@@ -15,5 +15,5 @@
 |:--:|:--|
 |`dev`|NextJSの開発サーバーを起動します|
 |`lint`|ESLint/Prettierのフォーマットチェックと自動修正を実行します|
-|`lint:check`|ESLint/Prettierのフォーマットチェックを実行します|
+|`lint:check`|ESLint/Prettierのフォーマットチェックを実行します|
 |`download:contents`|MicroCMSからコンテンツをダウンロードします|
