@@ -20,7 +20,7 @@ const fetchList = async <T>(endpoint: string): Promise<T[]> => {
     queries: {
       orders: 'createdAt',
       offset: 0,
-      limit: 30,
+      limit: 1,
     },
   });
   // 1ページ目を取得済みなので切り捨てる

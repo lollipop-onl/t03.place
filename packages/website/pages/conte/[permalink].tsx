@@ -5,7 +5,6 @@ import {
 } from '@cms-typings';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import React from 'react';
-import { setupCMSUtil } from '~/utils';
 
 type Props = {
   work: MicroCMSApiWorksSchema;
@@ -19,14 +18,12 @@ type Params = {
 export const getStaticProps: GetStaticProps<Props, Params> = async ({
   params,
 }) => {
-  const { works, performances } = await setupCMSUtil();
+  const { works, performances } = await import('@cms-contents');
 
   const work = works.find(({ permalink }) => permalink === params?.permalink);
 
   if (!work) {
-    return {
-      notFound: true,
-    };
+    return { notFound: true};
   }
 
   const referencedPerformances = performances.filter(({ programs }) =>
@@ -45,7 +42,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
 };
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const { works } = await setupCMSUtil();
+  const { works } = await import('@cms-contents');
 
   return {
     paths: works
