@@ -1,3 +1,4 @@
+import { MicroCMSImageSchema } from '.';
 import { MicroCMSApiBaseSchema, MicroCMSCustomFieldBaseSchema } from './common';
 import { MicroCMSApiMusicSchema } from './music';
 
@@ -21,6 +22,7 @@ export type MicroCMSApiWorksSchema = MicroCMSApiBaseSchema<{
   type: Array<'ネタ' | '映像'>;
   slug: string;
   title: string;
+  mainImage?: MicroCMSImageSchema;
   summary?: string;
   length?: number;
   music: MicroCMSApiMusicSchema[];

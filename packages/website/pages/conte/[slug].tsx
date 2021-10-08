@@ -1,10 +1,11 @@
 import {
-  MicroCMSApiArrayResponse,
   MicroCMSApiPerformanceSchema,
   MicroCMSApiWorksSchema,
 } from '@cms-typings';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import Head from 'next/head';
 import React from 'react';
+import { withTitleTemplate } from '~/utils';
 
 type Props = {
   work: MicroCMSApiWorksSchema;
@@ -53,11 +54,27 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 
 const ConteDetailPage: React.VFC<Props> = ({ work, performances }) => {
   return (
-    <div>
-      <p>hello world.</p>
-      <pre>{JSON.stringify(work)}</pre>
-      <pre>{JSON.stringify(performances)}</pre>
-    </div>
+    <>
+      <Head>
+        <title>{`${work.title} ... 東京03のコント`}</title>
+      </Head>
+      <div className="mx-auto w-full max-w-screen-md">
+        <h1
+          className="mb-4 text-2xl"
+          style={{ fontFamily: 'RocknRoll One, sans-serif' }}
+        >
+          {work.title}
+        </h1>
+        <small>TOKYO 03</small>
+        {work.summary && <p>{work.summary}</p>}
+        <h2>このコントが見られた公演</h2>
+        <ul>
+          {performances.map(({ slug, title }) => (
+            <li key={slug}>{title}</li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 };
 

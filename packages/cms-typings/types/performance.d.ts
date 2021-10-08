@@ -1,3 +1,4 @@
+import { MicroCMSImageSchema } from '.';
 import { MicroCMSApiBaseSchema, MicroCMSCustomFieldBaseSchema } from './common';
 import { MicroCMSApiMusicSchema } from './music';
 import { MicroCMSApiWorksSchema } from './works';
@@ -20,6 +21,8 @@ export type MicroCMSApiPerformanceSchema = MicroCMSApiBaseSchema<{
   type: '単独公演' | 'ユニットライブ' | '特別公演' | 'その他';
   slug: string;
   title: string;
+  mainImage?: MicroCMSImageSchema;
+  summary?: string;
   programs: Array<
     MicroCMSCustomFieldWorkSchema | MicroCMSCustomFieldMusicSchema
   >;
